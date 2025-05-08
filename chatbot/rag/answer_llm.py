@@ -1,4 +1,4 @@
-import os
+import os, re
 import requests
 from dotenv import load_dotenv
 
@@ -37,9 +37,6 @@ def llm_answer(prompt: str, category: str = None, history: list = None) -> str:
     </ul>
     본문 설명 문단<br><br>
 
-    🔗 참고 링크<br>
-    - 내부 문서 또는 외부 URL 등 출처 목록
-
     질문: {question}
     참고 문서: {context}
     """
@@ -59,7 +56,7 @@ def llm_answer(prompt: str, category: str = None, history: list = None) -> str:
         "model": "gemma2-9b-it",
         "messages": messages,
         "temperature": 0.7,
-        "max_tokens": 1050
+        "max_tokens": 2000
     }
 
     response = requests.post(url, headers=headers, json=data)
@@ -70,9 +67,7 @@ def llm_answer(prompt: str, category: str = None, history: list = None) -> str:
         response.raise_for_status()
 
     response.raise_for_status()
-    
-    print("✅ API Key:", GROQ_API_KEY)
-    print("✅ Payload:", data)
-    print("✅ Headers:", headers)
 
-    return response.json()["choices"][0]["message"]["content"].strip()
+    cleaned = response.json()["choices"][0]["message"]["content"].strip()
+    cleaned = re.sub(r"<br><br><span class='badge'>.*?</span>", "", cleaned, flags=re.IGNORECASE)
+    return cleaned
