@@ -4,6 +4,10 @@ from .answer_llm import llm_answer
 from .relevance_check import is_relevant
 from .internal_rag import search_documents, generate_answer_with_docs
 from .external_rag import tavily_search
+import re
+
+def strip_badge(text: str) -> str:
+    return re.sub(r"<br\s*/?><br\s*/?><span class=['\"]?badge['\"]?>.*?</span>", "", text, flags=re.IGNORECASE)
 
 
 def get_final_answer(user_question: str, history: list) -> str:
@@ -56,5 +60,6 @@ def get_final_answer(user_question: str, history: list) -> str:
             answer = tavily_search(user_question)
             badge = "🌐 외부 문서"
 
-    # ✅ 최종 응답에만 뱃지를 단 한 번만 붙인다
-    return answer.strip() + f"<br><br><span class='badge'>{badge}</span>"
+    # 최종 응답에만 뱃지를 단 한 번만 붙인다
+    cleaned_answer = strip_badge(answer.strip())
+    return cleaned_answer + f"<br><br><span class='badge'>{badge}</span>"
