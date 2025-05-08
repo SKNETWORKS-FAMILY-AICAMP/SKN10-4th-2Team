@@ -1,6 +1,9 @@
 <!-- prettier-ignore -->
-{% extends 'base/index.html' %} {% block title %}로그인-회원가입{% endblock %} {% block css %} 
+{% extends 'base/index.html' %}
+{% block title %}로그인-회원가입{% endblock %}
+{% block css %} 
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
 <link
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
@@ -46,10 +49,17 @@
 
 		<div class="overlay-container">
 			<div class="overlay-left">
+				<h1>
+					<a href="{% url 'chatbot-index' %}" class="main-link">Main</a>
+				</h1>
+				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
 				<button id="signIn" class="overlay_btn">Sign In</button>
 			</div>
 			<div class="overlay-right">
+				<h1>
+					<a href="{% url 'chatbot-index' %}" class="main-link">Main</a>
+				</h1>
 				<h1>Hello, Friend</h1>
 				<p>Enter your personal details and start journey with us</p>
 				<button id="signUp" class="overlay_btn">Sign Up</button>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,8 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{% block title %} {% endblock %}</title>
 		{% block css %} {% endblock %}
+
+		<link rel="stylesheet" href="{% static 'css/index.css' %}" />
 	</head>
 	<body>
+		<nav class="navbar">
+			<div class="nav-container">
+				<a href="{% url 'chatbot-index' %}" class="nav-logo">Main</a>
+				<ul class="nav-menu">
+					<li class="nav-item"><a href="{% url 'user-login-register' %}" class="nav-link">login</a></li>
+					
+				</ul>
+			</div>
+		</nav>
+
 		{% block content %} {% endblock %}
 
 		<!-- prettier-ignore -->
