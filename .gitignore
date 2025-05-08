@@ -1,3 +1,6 @@
-.venv
+# 가상환경 및 환경 변수
+.venv/
 .env
-VectorDB/data
+
+# 벡터 DB 데이터
+VectorDB/data/

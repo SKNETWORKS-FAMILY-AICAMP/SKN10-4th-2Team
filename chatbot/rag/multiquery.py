@@ -8,7 +8,7 @@ openai = OpenAI()
 
 def generate_multi_queries(user_question: str) -> list[str]:
     """
-    사용자 질문에 대해 와인의 맛, 특징, 구매 판단에 도움을 줄 수 있는 서브 질문 3개 생성.
+    사용자 질문에 대해 와인의 맛, 특징, 구매 판단에 도움을 줄 수 있는 서브 질문 2개 생성.
     """
     prompt = f"""당신은 와인 전문 큐레이터입니다.
 
@@ -31,5 +31,5 @@ def generate_multi_queries(user_question: str) -> list[str]:
 
     content = response.choices[0].message.content.strip()
     queries = [line.strip() for line in content.split("\n") if line.strip()]
-    return queries[:3]
+    return queries[:2]
 
