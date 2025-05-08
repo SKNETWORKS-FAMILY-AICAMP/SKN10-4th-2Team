@@ -59,7 +59,7 @@ def llm_answer(prompt: str, category: str = None, history: list = None) -> str:
         "model": "gemma2-9b-it",
         "messages": messages,
         "temperature": 0.7,
-        "max_tokens": 1050
+        "max_tokens": 2000
     }
 
     response = requests.post(url, headers=headers, json=data)
