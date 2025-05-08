@@ -1,62 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!-- prettier-ignore -->
+{% extends 'base/index.html' %} {% block title %}로그인-회원가입{% endblock %} {% block css %} 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
+<link
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+	rel="stylesheet" />
+{% endblock %} {% block js %} {% load static %}
+<script src="{% static 'js/login_register.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %} {% block content %}
+<!-- prettier-ignore -->
+{% csrf_token %}
+<div class="wrapper">
+	{% if messages %}
+	<div class="message-container">
+		{% for message in messages %}
+		<div class="message {{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+	</div>
+	{% endif %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
-</head>
-<body>
-    <h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
-                <h1>Create Account</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="sign-up-container">
+			<form action="{% url 'user-login-register' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="action" value="signup" />
+				<h1>Create Account</h1>
+				<input type="text" placeholder="Username" name="username" required />
+				<input type="email" placeholder="Email" name="email" required />
+				<input type="password" placeholder="Password" name="password" required />
+				<button class="form_btn">Sign Up</button>
+			</form>
+		</div>
 
-    <script src="{% static 'js/login_register.js' %}"></script>
-</body>
-</html>
+		<div class="sign-in-container">
+			<form action="{% url 'user-login-register' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="action" value="signin" />
+				<h1>Sign In</h1>
+				<input type="text" placeholder="Username" name="username" required autofocus />
+				<input type="password" placeholder="Password" name="password" required />
+				<button class="form_btn">Sign In</button>
+			</form>
+		</div>
+
+		<div class="overlay-container">
+			<div class="overlay-left">
+				<p>To keep connected with us please login with your personal info</p>
+				<button id="signIn" class="overlay_btn">Sign In</button>
+			</div>
+			<div class="overlay-right">
+				<h1>Hello, Friend</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button id="signUp" class="overlay_btn">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
