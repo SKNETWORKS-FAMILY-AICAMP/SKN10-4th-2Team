@@ -1,115 +1,134 @@
-/* Reset & 기본 설정 */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background-color: #fafafa;
+    font-family: "Montserrat", sans-serif;
+    background: #ebecf0;
     color: #333;
     line-height: 1.6;
-    padding: 40px;
 }
 
-h1,
-h2,
-h3 {
-    color: #8B0000;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ebecf0;
 }
 
-h1 {
-    font-size: 2.4rem;
-    margin-bottom: 24px;
+/* Content-specific */
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
-h2 {
-    font-size: 1.8rem;
-}
-
-h3 {
-    font-size: 1.4rem;
-}
-
-p {
-    margin-bottom: 16px;
-}
-
-/* 배지 */
-.badge {
-    display: inline-block;
-    background: #8B0000;
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-/* 목차 리스트 */
-ul {
-    margin: 12px 0 24px 20px;
-}
-
-li {
-    margin-bottom: 8px;
-}
-
-/* 표 스타일 */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-th,
-td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-th {
-    background-color: #f7f7f7;
-    font-weight: 600;
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-/* 프리 영역 */
-pre {
-    background-color: #f7f7f7;
-    padding: 16px;
-    border-left: 4px solid #8B0000;
-    overflow-x: auto;
-    margin-bottom: 32px;
+.content h2 {
+    background-color: #ffe5b4;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
     border-radius: 4px;
 }
 
-/* 반응형 깨짐 방지 */
+.section-body {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.preformatted {
+    white-space: pre-line;
+}
+
+/* Tables */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.styled-table th,
+.styled-table td {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.styled-table thead {
+    background: #f2f2f2;
+}
+
+
+/* 네비게이션 바 */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d63e31;
+    /* 와인 레드 계열 포인트 */
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: #333333;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background-color: #f0eded;
+    color: #d63e31;
+}
+
+/* 반응형: 모바일 토글(간단 버전) */
 @media (max-width: 768px) {
-    body {
-        padding: 20px;
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.6rem;
-    }
-
-    table,
-    ul {
-        font-size: 0.9rem;
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        margin-top: 8px;
     }
 }
