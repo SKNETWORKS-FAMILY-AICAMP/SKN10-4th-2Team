@@ -1,10 +1,15 @@
-import os
+import os, re
 import pandas as pd
 from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
 openai = OpenAI()
+
+def normalize_name(name: str) -> str:
+    name = re.sub(r"[^\w\s]", " ", name)  # 특수문자 제거
+    name = re.sub(r"\s+", " ", name)      # 다중 공백 제거
+    return name.lower().strip()
 
 # ✅ 경로 기반 정제된 CSV → set 로드
 def load_entity_names(csv_path: str) -> set:
@@ -32,7 +37,7 @@ print(f"[🔍] 로드된 생산자 개수: {len(KNOWN_PRODUCER_NAMES)}")
 
 # ✅ 카테고리 분류 함수
 def classify_category(user_question: str) -> str:
-    lowered_question = user_question.lower()
+    lowered_question = normalize_name(user_question)
 
     for name in KNOWN_WINE_NAMES:
         if name in lowered_question:
