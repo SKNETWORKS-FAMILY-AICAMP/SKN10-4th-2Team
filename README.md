@@ -71,7 +71,7 @@
 
 ### Fine-Tuning - 유튜브 자막 기반
 
-- [세상의 모든 와인 All that wine](https://www.youtube.com/@allthatwine/playlists)
+- [**세상의 모든 와인 All that wine**](https://www.youtube.com/@allthatwine/playlists)
   - 와인 테이스팅의 모든 것
   - [중급 강의]30분만에 끝나는 '와인 이제 좀 안다!' 클래스
   - [초급 강의]30분만에 끝나는 와인 인생초보 탈출
@@ -79,7 +79,7 @@
   - 와인 지역별 비교
   - 와인 품종별 비교
   - 와인기초상식식
-- [와푸밸 Wine Food Balance](https://www.youtube.com/@winefoodbalance1143/playlists)
+- [**와푸밸 Wine Food Balance**](https://www.youtube.com/@winefoodbalance1143/playlists)
   - [와인 추천]
   - [와인 상식, 와인 꿀팁]
   - [음식과 와인 조합]
@@ -89,7 +89,7 @@
 
 ### RAG
 
-- [WINE21.COM](https://www.wine21.com/13_search/wine_list.html)
+- [**WINE21.COM**](https://www.wine21.com/13_search/wine_list.html)
 
 📌 해당 사이트에서 필요한 정보를 `request`, `BeautifulSoup`, `Selenium`을 통해 추출하여 사용하였다.
 
@@ -128,6 +128,7 @@
 ## 7. 확장 가능성 및 고도화 아이디어
 
 | 기능 | 설명 |
+|------|------|
 | 📷 라벨 이미지 인식 | 와인 라벨 이미지로 품종 및 설명 자동 추출 |
 | 🛒 쇼핑몰 연동 | 추천 와인에 바로 연결되는 구매 링크 제공 |
 | 📓 테이스팅 노트 기록 | 사용자가 마신 와인을 기록해 개인화 추천 정밀도 향상 |
@@ -229,7 +230,7 @@ python manage.py runserver
 
 ### 📥 1. `.gguf` 파일 다운로드
 
-[Hugging Face 모델](https://huggingface.co/Minkyeong2/gemma3-Wine-Guide-gguf) 페이지에서 `.gguf` 확장자를 가진 파일을 다운로드한다.
+[**Hugging Face 모델**](https://huggingface.co/Minkyeong2/gemma3-Wine-Guide-gguf) 페이지에서 `.gguf` 확장자를 가진 파일을 다운로드한다.
 
 <img src='imgs/1_model_download.png' width=800>
 
