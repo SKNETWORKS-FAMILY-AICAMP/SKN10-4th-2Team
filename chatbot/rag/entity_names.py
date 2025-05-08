@@ -2,8 +2,10 @@ import os, re
 import pandas as pd
 from glob import glob
 
+# 내부 캐시
+_entity_cache = {}
+
 def normalize_name(name: str) -> str:
-    # 쉼표 제거, 다중 공백 정리, 소문자 통일
     name = re.sub(r"[^\w\s]", " ", name)  # 특수문자 제거
     name = re.sub(r"\s+", " ", name)      # 다중 공백 제거
     return name.lower().strip()
@@ -39,13 +41,35 @@ def load_known_wine_names(data_dir: str = "VectorDB/data/wine") -> set:
             print(f"[⚠️] CSV 로드 실패: {file_path} → {e}")
     return wine_names
 
-def load_known_producer_names(data_dir: str = "VectorDB/data/producer") -> set:
-    return load_column_values_from_csv(data_dir, "생산자")
-
+def load_known_grape_names(data_dir: str = "VectorDB/data/grape") -> set:
+    return load_column_values_from_csv(data_dir, "포도품종")
 
 def load_known_region_names(data_dir: str = "VectorDB/data/region") -> set:
     return load_column_values_from_csv(data_dir, "생산지역")
 
+def load_known_producer_names(data_dir: str = "VectorDB/data/producer") -> set:
+    return load_column_values_from_csv(data_dir, "생산자")
 
-def load_known_grape_names(data_dir: str = "VectorDB/data/grape") -> set:
-    return load_column_values_from_csv(data_dir, "포도품종")
+# ✅ 공개 API: 최초 1회만 로드 후 재사용
+def get_known_entities() -> dict:
+    if _entity_cache:
+        return _entity_cache  # 이미 로드된 경우 재사용
+
+    wine = load_known_wine_names()
+    grape = load_known_grape_names()
+    region = load_known_region_names()
+    producer = load_known_producer_names()
+
+    _entity_cache.update({
+        "wine": wine,
+        "grape": grape,
+        "region": region,
+        "producer": producer
+    })
+
+    print(f"[🔍] 로드된 와인명 개수: {len(wine)}")
+    print(f"[🔍] 로드된 포도 품종 개수: {len(grape)}")
+    print(f"[🔍] 로드된 생산지역 개수: {len(region)}")
+    print(f"[🔍] 로드된 생산자 개수: {len(producer)}")
+
+    return _entity_cache
