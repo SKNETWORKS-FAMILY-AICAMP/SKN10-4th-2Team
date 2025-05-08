@@ -11,7 +11,6 @@ def normalize_name(name: str) -> str:
     name = re.sub(r"\s+", " ", name)      # 다중 공백 제거
     return name.lower().strip()
 
-# ✅ 캐시된 엔티티 불러오기 (1회만 수행됨)
 ENTITIES = get_known_entities()
 
 KNOWN_WINE_NAMES = ENTITIES["wine"]
