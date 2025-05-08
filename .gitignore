@@ -4,3 +4,5 @@
 
 # 벡터 DB 데이터
 VectorDB/data/
+
+database/mysql.sock
