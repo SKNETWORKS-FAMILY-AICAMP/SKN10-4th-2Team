@@ -69,7 +69,7 @@
 
 ## 5. 데이터 소스
 
-### Fine-Tuning - 유튜브 자막 기반
+### 1. Fine-Tuning - 유튜브 자막 기반
 
 - [**세상의 모든 와인 All that wine**](https://www.youtube.com/@allthatwine/playlists)
   - 와인 테이스팅의 모든 것
@@ -78,7 +78,7 @@
   - 와인추천
   - 와인 지역별 비교
   - 와인 품종별 비교
-  - 와인기초상식식
+  - 와인기초상식
 - [**와푸밸 Wine Food Balance**](https://www.youtube.com/@winefoodbalance1143/playlists)
   - [와인 추천]
   - [와인 상식, 와인 꿀팁]
@@ -86,8 +86,7 @@
 
 📌 해당 재생목록 영상들의 자막 데이터를 통해 와인에 대한 지식, 와인 추천 등에 대한 정보를 추출하여 모델을 학습시킨다.
 
-
-### RAG
+### 2. RAG
 
 - [**WINE21.COM**](https://www.wine21.com/13_search/wine_list.html)
 
