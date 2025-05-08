@@ -1,0 +1,33 @@
+# Django + DB
+django
+mysqlclient
+
+# OpenAI API
+openai
+
+# GROQ
+groq
+
+# LangChain core + vector DB
+langchain
+langchain-community
+langchain-openai
+faiss-cpu
+pandas
+
+# LangGraph (💡 추가된 부분)
+langgraph
+
+# RAG
+sentence-transformers
+
+# 개발 및 디버깅
+jupyter
+python-dotenv
+matplotlib
+
+# 크롤링
+beautifulsoup4
+requests
+selenium
+webdriver-manager
