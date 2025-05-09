@@ -50,6 +50,3 @@ def login_required(request):
         return redirect('user-login-register')
             
     return render(request, 'user/login_register.html')
-
-def register(request):
-    return render(request, 'user/register.html')
