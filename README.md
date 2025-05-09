@@ -202,19 +202,28 @@ uv pip install -r requirements.txt
 ### 🧠 3. Ollama 모델 설치
 
 Hugging Face에 등록된 모델을 사용하기 위해 `.gguf` 파일을 다운로드하여 Ollama에 설치한다.<br/>
-자세한 설치 방법은 `10-1`을 참고한다.
+자세한 설치 방법은 `11`을 참고한다.
 
 ### 🔐 4. 환경 변수 설정 (.env 파일 생성)
 
 `.env` 파일을 프로젝트 루트 디렉터리에 생성하고, 다음 내용을 추가해야 한다:
 
 ```env
-GROQ_API_KEY=[your_groq_api_key]
-OPENAI_API_KEY=[your_openai_api_key]
-HF_TOKEN=[your_huggingface_token_api_key]
+GROQ_API_KEY=[groq_api_key]
+OPENAI_API_KEY=[openai_api_key]
+HF_TOKEN=[huggingface_token_api_key]
 ```
 
-### 🚀 5. 실행
+### 🐳 5. Docker Container 생성
+
+Docker Desktop 애플리케이션을 실행한 후 다음 명령어를 터미널에 입력한다.
+
+```bash
+docker-compose up -d
+```
+
+### 🚀 6. 실행
+
 Django를 사용하는 경우:
 
 ```bash
@@ -225,7 +234,7 @@ python manage.py runserver
 
 <br>
 
-## 10-1. Ollama 모델 설치
+## 11. Ollama 모델 설치
 
 ### 📥 1. `.gguf` 파일 다운로드
 
@@ -280,13 +289,13 @@ ollama create gemma3-wine -f Modelfile
 
 <br>
 
-## 11. 이슈 및 해결방법
+## 12. 이슈 및 해결방법
 
 ### 1. 
 
 <br>
 
-## 12. 회고
+## 13. 회고
 
 ### 문승기
 
