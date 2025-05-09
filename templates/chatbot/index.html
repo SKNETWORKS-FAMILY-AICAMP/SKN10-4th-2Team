@@ -1,116 +1,113 @@
 {% extends 'base/index.html' %}
-{% load static %}
-{% block title %}와인초보 입문 가이드 챗봇{% endblock %}
+
+{% block title %}🍷 와인 초보 입문 가이드 챗봇{% endblock %}
 
 {% block css %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{{ block.super }}
+{% load static %}
+
+<!-- Bootstrap CSS 추가 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div class="wrapper">
-	<div class="container content">
-
-		<!-- 상단 캐러셀 -->
-		<div id="mainCarousel" class="carousel slide carousel-dark mb-5" data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active" style="height: 32rem; background: #777;">
-					<div class="d-flex h-100 text-center text-white align-items-center justify-content-center">
-						<div>
-							<h1>🍷 와인 초보 입문 가이드 챗봇</h1>
-							<p class="lead">
-								AI 기반으로 와인 페어링·용어 해석·추천까지<br>
-								정확도 높은 다단계 평가 챗봇 서비스
-							</p>
-							<a class="btn btn-primary" href="#overview">서비스 개요 보기</a>
-						</div>
-					</div>
+<main class="container mt-4">
+	<!-- Carousel -->
+	<div id="wineCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#wineCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+				aria-label="서비스 개요"></button>
+			<button type="button" data-bs-target="#wineCarousel" data-bs-slide-to="1" aria-label="기획 배경"></button>
+			<button type="button" data-bs-target="#wineCarousel" data-bs-slide-to="2" aria-label="UX 시나리오"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="{% static 'images/overview.png' %}" class="d-block w-100" alt="서비스 개요">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>서비스 개요</h5>
+					<p>AI 기반 다단계 평가 방식으로 와인 입문자를 위한 페어링, 용어 해석, 추천 제공</p>
 				</div>
-				<!-- 추가 슬라이드 필요 시 여기에 더 추가 -->
 			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-				<span class="carousel-control-next-icon"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
+			<div class="carousel-item">
+				<img src="{% static 'images/background.png' %}" class="d-block w-100" alt="기획 배경">
+				<div class="carousel-caption d-none d-md-block text-start">
+					<h5>기획 배경</h5>
+					<ul class="list-unstyled">
+						<li>🍇 와인 정보 복잡(라벨·품종·빈티지)</li>
+						<li>🧀 실용적 페어링 정보 부족(한식·매운 음식)</li>
+						<li>📱 홈술 및 비대면 큐레이션 수요 증가</li>
+					</ul>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="{% static 'images/ux.png' %}" class="d-block w-100" alt="UX 시나리오">
+				<div class="carousel-caption d-none d-md-block text-end">
+					<h5>UX 시나리오</h5>
+					<p>질문 → 버튼 클릭 → sLLM → GPT-4o-mini 평가 → RAG → Tavily 보완 → 최종 응답</p>
+				</div>
+			</div>
 		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#wineCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#wineCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
 
-		<!-- 1. 가장 큰 제목 -->
-		<h1 id="overview" class="mb-4">와인초보 입문 가이드 챗봇 기획안</h1>
-
-		<!-- 1. 서비스 개요 -->
+	<!-- Sections -->
+	<section class="mb-5">
 		<h2>1. 서비스 개요</h2>
-		<div class="section-body mb-4">
-			와인 입문 챗봇은 와인에 대한 지식이 부족한 초보자를 위해,<br>
-			음식 페어링, 와인 용어 해석, 입문용 추천 정보를 AI 기반으로<br>
-			정확하고 다단계 평가 방식으로 안내하는 맞춤형 챗봇 서비스입니다.
-		</div>
+		<p>와인 초보자 맞춤형 챗봇으로 음식 페어링, 와인 용어 해석, 추천 정보를 AI 기반 다단계 평가 방식으로 제공합니다.</p>
+	</section>
 
-		<!-- 2. 기획 배경 -->
+	<section class="mb-5">
 		<h2>2. 기획 배경</h2>
-		<div class="section-body mb-4">
-			🍇 <strong>와인 정보의 복잡함</strong><br>
-			&nbsp;&nbsp;라벨, 품종, 빈티지 등 구조화되지 않은 정보가 많아 진입장벽이 높음<br>
-			🧀 <strong>실용적인 음식 페어링 정보 부족</strong><br>
-			&nbsp;&nbsp;한식, 매운 음식 등 실생활 기반 궁합 정보 부족<br>
-			📱 <strong>비대면 와인 큐레이션 수요 증가</strong><br>
-			&nbsp;&nbsp;홈술 트렌드와 입문자 증가로, 대화형 정보 탐색 니즈 확대
-		</div>
+		<ul>
+			<li>🍇 와인 정보의 복잡함: 라벨·품종·빈티지 등 미구조화 정보</li>
+			<li>🧀 실용적 음식 페어링 정보 부족</li>
+			<li>📱 홈술 트렌드 및 비대면 큐레이션 수요 증가</li>
+		</ul>
+	</section>
 
-		<!-- 3. UX 시나리오 -->
-		<h2>3. 사용자 경험 흐름 (UX 시나리오)</h2>
-		<div class="section-body mb-4">
-			✅ <strong>사용자 입력 단계</strong><br>
-			&nbsp;&nbsp;“삼겹살에 어울리는 와인 뭐가 있어요?”<br>
-			&nbsp;&nbsp;“까쇼 블렌딩이 뭔 뜻이에요?”<br>
-			&nbsp;&nbsp;“2~3만 원대 입문용 레드 추천해줘요”<br>
-			➡️ ‘와인 추천 받기’ 버튼 클릭<br><br>
+	<section class="mb-5">
+		<h2>3. UX 시나리오</h2>
+		<ol>
+			<li>사용자 질문 입력(예: “삼겹살에 어울리는 와인 뭐가 있어요?”)</li>
+			<li>‘와인 추천 받기’ 버튼 클릭</li>
+			<li>챗봇 응답 프로세스:
+				<ul>
+					<li>1차: sLLM 생성 → GPT-4o-mini 평가</li>
+					<li>부족 시: FAISS RAG 검색 → 응답 보완</li>
+					<li>추가 보완: Tavily 웹 요약 → 최종 응답</li>
+				</ul>
+			</li>
+		</ol>
+	</section>
 
-			🤖 <strong>챗봇 응답 프로세스</strong><br>
-			&nbsp;&nbsp;1. 사용자 질문 → sLLM이 1차 응답 A 생성<br>
-			&nbsp;&nbsp;2. GPT-4o-mini가 A의 신뢰도와 연관성 평가<br>
-			&nbsp;&nbsp;3. 불충분 시 → FAISS 기반 RAG로 내부 문서 검색 → 응답 B 생성<br>
-			&nbsp;&nbsp;4. 다시 GPT-4o-mini가 B 평가<br>
-			&nbsp;&nbsp;5. 여전히 부족 시 → Tavily API로 외부 콘텐츠 요약 → 최종 응답 C 생성<br>
-			&nbsp;&nbsp;6. 사용자에게 가장 신뢰도 높은 결과 제공<br>
-			&nbsp;&nbsp;→ 다단계 필터링으로 정확도 높은 추천 및 설명 제공
-		</div>
-
-		<!-- 4. 기술 구성 요소 -->
+	<section class="mb-5">
 		<h2>4. 기술 구성 요소</h2>
-		<div class="section-body mb-4">
-			🧠 <strong>LLM 및 평가 모델</strong><br>
-			&nbsp;&nbsp;- 1차 응답: Fine-tuned sLLM (와인 용어·페어링 문체 학습)<br>
-			&nbsp;&nbsp;- 평가: GPT-4o-mini (OpenAI API 기반)<br><br>
+		<ul>
+			<li>🧠 LLM: Fine-tuned sLLM + GPT-4o-mini 평가</li>
+			<li>🔍 RAG: FAISS 기반 검색, Tavily API</li>
+			<li>💻 시스템: Django 백엔드, Bootstrap 프론트엔드</li>
+		</ul>
+	</section>
 
-			🔍 <strong>검색 기반 QA (RAG)</strong><br>
-			&nbsp;&nbsp;- 부정확 시 → FAISS 내부 문서 벡터 검색<br>
-			&nbsp;&nbsp;- 관련 콘텐츠 주입 후 재생성<br>
-			&nbsp;&nbsp;- 필요 시 Tavily 웹 검색으로 보완<br><br>
-
-			💻 <strong>시스템 구성</strong><br>
-			&nbsp;&nbsp;- 백엔드: Django (Python)<br>
-			&nbsp;&nbsp;- 프론트엔드: HTML, CSS, Django Template<br>
-			&nbsp;&nbsp;- 모듈 흐름: 입력 → sLLM → GPT-4o-mini → RAG → Tavily
-		</div>
-
-		<!-- 5. 데이터 소스 -->
+	<section class="mb-5">
 		<h2>5. 데이터 소스</h2>
-		<div class="section-body mb-4">
-			• <strong>내부 문서</strong><br>
-			&nbsp;&nbsp;- 한국와인협회 초보자 가이드, 수입사 교육자료 (PDF→텍스트 전처리)<br>
-			&nbsp;&nbsp;- 음식별 와인 페어링 추천표<br><br>
-			• <strong>외부 콘텐츠</strong><br>
-			&nbsp;&nbsp;- 유튜브 자막 (와인앤모어, 비노빈센트)<br>
-			&nbsp;&nbsp;- 와인 리뷰 블로그·마트 콘텐츠 (출처 표시 및 요약)
-		</div>
+		<ul>
+			<li>내부 문서: 한국와인협회 가이드, 수입사 교육자료</li>
+			<li>음식별 와인 페어링 표</li>
+			<li>외부 콘텐츠: 유튜브 자막, 리뷰 블로그, 마트 콘텐츠</li>
+		</ul>
+	</section>
 
-		<!-- 6. 사용자 케이스 예시 -->
+	<section class="mb-5">
 		<h2>6. 사용자 케이스 예시</h2>
-		<table class="styled-table mb-4">
+		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>케이스</th>
@@ -121,75 +118,59 @@
 			<tbody>
 				<tr>
 					<td>🍛 음식 페어링</td>
-					<td>삼겹살, 매운탕, 치즈 등과 어울리는 와인 추천</td>
-					<td>추천 와인 + 페어링 이유 제공</td>
+					<td>삼겹살, 매운탕, 치즈</td>
+					<td>추천 + 이유 제공</td>
 				</tr>
 				<tr>
-					<td>📘 와인 용어 해설</td>
-					<td>까쇼, 블렌딩, 빈티지, 바디감 등 전문용어 풀이</td>
-					<td>용어 설명 + 연관 예시 와인 안내</td>
+					<td>📘 용어 해설</td>
+					<td>까쇼, 빈티지, 바디감</td>
+					<td>용어 설명 + 예시 와인</td>
 				</tr>
 				<tr>
 					<td>🍷 구매 가이드</td>
-					<td>입문자용 가격대, 인기 품종 추천</td>
-					<td>가격대별 와인 추천 + 구매 팁 제공</td>
+					<td>2~3만 원대 레드 와인</td>
+					<td>가격대별 추천 + 구매 팁</td>
 				</tr>
 			</tbody>
 		</table>
+	</section>
 
-		<!-- 7. 고도화 아이디어 -->
+	<section class="mb-5">
 		<h2>7. 고도화 아이디어</h2>
-		<table class="styled-table mb-4">
-			<thead>
-				<tr>
-					<th>기능</th>
-					<th>설명</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>📷 라벨 이미지 인식</td>
-					<td>와인 라벨 이미지로 품종 및 설명 자동 추출</td>
-				</tr>
-				<tr>
-					<td>🛒 쇼핑몰 연동</td>
-					<td>추천 와인에 바로 연결되는 구매 링크 제공</td>
-				</tr>
-				<tr>
-					<td>📓 테이스팅 노트 기록</td>
-					<td>사용자가 마신 와인을 기록해 개인화 추천 정밀도 향상</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>📷 라벨 이미지 인식</h3>
+				<p>라벨 이미지로 품종·정보 자동 추출</p>
+			</div>
+			<div class="col-md-4">
+				<h3>🛒 쇼핑몰 연동</h3>
+				<p>구매 링크 제공</p>
+			</div>
+			<div class="col-md-4">
+				<h3>📓 테이스팅 노트 기록</h3>
+				<p>노트 기록으로 개인화 추천 정밀도 향상</p>
+			</div>
+		</div>
+	</section>
 
-		<!-- 8. 기대 효과 -->
+	<section class="mb-5">
 		<h2>8. 기대 효과</h2>
-		<div class="section-body mb-4">
-			✅ 와인 입문자의 학습과 실용 소비 지원<br>
-			✅ 정확한 추천 및 해설로 신뢰성 있는 콘텐츠 제공<br>
-			✅ 와인 문화 확산 및 커머스 연계 가능성 확보
-		</div>
+		<ul>
+			<li>✅ 학습과 실용 소비 지원</li>
+			<li>✅ 정확성 높은 추천으로 신뢰 확보</li>
+			<li>✅ 와인 문화 확산 및 커머스 연계</li>
+		</ul>
+	</section>
 
-		<!-- 9. 응답 생성 프로세스 요약 -->
+	<section class="mb-5">
 		<h2>9. 응답 생성 프로세스 요약</h2>
-		<div class="section-body preformatted mb-5">
-			[사용자 질문 입력]<br>
-			↓<br>
-			[Fine-tuned sLLM이 1차 응답 생성]<br>
-			↓<br>
-			[GPT-4o-mini가 평가 → 부정확 시]<br>
-			↓<br>
-			[FAISS로 내부 문서 검색 → 응답 재생성]<br>
-			↓<br>
-			[여전히 부족 시 Tavily로 웹 검색 요약]<br>
-			↓<br>
-			[최종 응답 + 후속 추천 제공]
-		</div>
-
-	</div>
-</div>
+		<p>질문 → sLLM → GPT-4o-mini → FAISS RAG → Tavily → 최종 응답</p>
+	</section>
+</main>
 {% endblock %}
 
-{% block script %}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
+{% block js %}
+{{ block.super }}
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
