@@ -7,3 +7,7 @@ database/
 chatbot/migrations/
 user/migrations/
 
+# pychache 제거
+chatbot/__pycache__/
+user/__pycache__/
+config/__pycache__/
