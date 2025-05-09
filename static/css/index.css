@@ -1,97 +1,63 @@
-/* Navigation Bar */
-.navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #d63e31;
-    text-decoration: none;
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-}
-
-.nav-link {
-    font-size: 1rem;
-    color: #333;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-    background-color: #f0eded;
-    color: #d63e31;
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 20px;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        width: 100%;
-        gap: 8px;
-        margin-top: 8px;
-    }
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    background-color: #f8f9fa;
+	font-family: 'Montserrat', sans-serif;
+	background: #ebecf0;
+	color: #333;
+	line-height: 1.6;
 }
 
-header {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #ebecf0;
 }
 
-.carousel-item img {
-    object-fit: cover;
-    height: 400px;
+/* Content-specific */
+.content h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+	text-align: center;
 }
 
-section h2 {
-    margin-bottom: 1rem;
-    font-weight: 600;
+.content h2 {
+	background-color: #ffe5b4;
+	padding: 0.5rem;
+	margin-top: 1.5rem;
+	border-radius: 4px;
 }
 
-footer {
-    padding: 1rem 0;
-    background-color: #ffffff;
-    border-top: 1px solid #dee2e6;
+.section-body {
+	padding-left: 1rem;
+	margin-bottom: 1rem;
 }
 
-table.table {
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    overflow: hidden;
+.preformatted {
+	white-space: pre-line;
+}
+
+/* Tables */
+.styled-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1rem;
+}
+
+.styled-table th,
+.styled-table td {
+	border: 1px solid #ccc;
+	padding: 0.75rem;
+	text-align: left;
+}
+
+.styled-table thead {
+	background: #f2f2f2;
 }

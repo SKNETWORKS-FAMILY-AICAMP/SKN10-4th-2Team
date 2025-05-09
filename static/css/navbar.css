@@ -1,0 +1,95 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+/* 네비게이션 바 */
+.navbar {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	background-color: #ffffff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+}
+
+.nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-logo {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #d63e31;
+	/* 와인 레드 계열 포인트 */
+	text-decoration: none;
+}
+
+.nav-menu {
+	list-style: none;
+	display: flex;
+	gap: 24px;
+}
+
+.nav-item {
+	display: flex;
+	align-items: center;
+}
+
+.nav-link {
+	font-size: 1rem;
+	color: #333333;
+	text-decoration: none;
+	padding: 8px 12px;
+	border-radius: 4px;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+	background-color: #f0eded;
+	color: #d63e31;
+}
+
+/* 반응형 navbar (모바일 환경 고려) */
+/* 항상 토글 버튼 숨기기 (PC 기준) */
+.nav-toggle {
+	display: none;
+	font-size: 24px;
+	color: #d63e31;
+	cursor: pointer;
+}
+
+/* 항상 메뉴 보이도록 설정 (PC 기준) */
+.nav-menu {
+	list-style: none;
+	display: flex;
+	gap: 24px;
+}
+
+/* ✅ 모바일 미디어쿼리 */
+@media screen and (max-width: 768px) {
+	.nav-toggle {
+		display: block;
+	}
+
+	.nav-menu {
+		display: none;
+		position: absolute;
+		top: 60px;
+		left: 0;
+		right: 0;
+		background-color: white;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 10px 20px;
+		gap: 10px;
+	}
+
+	.nav-menu.active {
+		display: flex;
+	}
+}
