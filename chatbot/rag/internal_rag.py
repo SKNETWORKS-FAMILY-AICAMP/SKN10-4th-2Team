@@ -26,33 +26,45 @@ def search_documents(category: str, query: str, top_n: int = 3) -> list[Document
     return retriever.get_relevant_documents(query)
 
 def generate_answer_with_docs(query: str, documents: list[Document]) -> str:
-    """
-    검색된 문서들을 기반으로 Gemma 모델로 답변 생성.
-    관련 문서 출처 URL이 있으면 가장 관련성 높은 것 하나만 함께 포함.
-    """
     context = ""
-    first_url = None
+    sources = []
 
-    for i, doc in enumerate(documents):
+    for doc in documents:
         context += f"{doc.page_content}\n\n"
-        if i == 0 and doc.metadata.get("url"):
-            first_url = doc.metadata["url"]
+        url = doc.metadata.get("url")
+        if url and url not in sources:
+            sources.append(url)
 
-    prompt = f"""당신은 와인 소믈리에입니다.
-
-    다음은 와인 관련 참고 문서들이야:
+    prompt = f"""
+    당신은 와인 분야에 특화된 전문 큐레이터입니다.  
+    아래는 신뢰할 수 있는 내부 데이터베이스에서 추출한 자료입니다:
 
     {context}
 
-    위 정보를 참고하여 사용자 질문에 대해 정확하고 신뢰감 있게 답변해줘.
+    이 자료를 바탕으로 사용자 질문에 대해 다음 조건을 충실히 반영해 정리해 주세요:
+
+    1. **반드시 위의 문서(context)에 포함된 정보만 사용**하세요.  
+    2. 내용을 항목별로 요약 정리하되, **빠짐없이 정확하게** 구성하세요.  
+    3. 출력은 HTML 형식으로 하며, 다음과 같은 구성 순서를 지킵니다:
+    - <b>요약:</b> 한두 문장으로 핵심 정리 후 `<br><br>` 줄바꿈
+    - `<ul><li>` 형식으로 주요 특징을 나열
+    - 그 아래에 문단 형태로 부가 설명을 덧붙이세요.
+    4. 불필요한 수식어, 감성 표현, 문학적 묘사는 피하고 **정보 중심의 간결하고 명확한 설명**을 작성하세요.
+    5. 내용이 없거나 불충분한 항목은 생략하지 말고, 가능한 범위 내에서 정리하세요.
+
     질문: {query}
     """
 
     answer = llm_answer(prompt)
 
-    if first_url:
-        answer += f"\n\n📎 참고 링크:\n- {first_url}"
+    # ✅ 하나의 대표 URL만 보여주기
+    if sources:
+        source_url = sources[0]  # 가장 관련성 높은 하나만 사용
+        source_text = f"<br><br><a href='{source_url}' target='_blank'>🔗 참고 링크</a>"
+    else:
+        source_text = ""
 
-    return answer
+    return answer.strip() + source_text
+
 
 
