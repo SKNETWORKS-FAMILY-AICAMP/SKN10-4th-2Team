@@ -2,4 +2,8 @@
 .venv/
 .env
 
-database/mysql.sock
+database/
+
+chatbot/migrations/
+user/migrations/
+
