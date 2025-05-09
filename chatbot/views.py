@@ -7,7 +7,7 @@ import json
 from .rag.pipeline import get_final_answer
 
 def index(request):
-    return render(request, 'chatbot/index.html')
+    return render(request, 'chatbot/main.html')
 
 @login_required(login_url='/user/login-register/')
 def chat(request):
