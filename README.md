@@ -214,15 +214,7 @@ OPENAI_API_KEY=[openai_api_key]
 HF_TOKEN=[huggingface_token_api_key]
 ```
 
-### 🐳 5. Docker Container 생성
-
-Docker Desktop 애플리케이션을 실행한 후 다음 명령어를 터미널에 입력한다.
-
-```bash
-docker-compose up -d
-```
-
-### 🚀 6. 실행
+### 🚀 5. 실행
 
 Django를 사용하는 경우:
 
