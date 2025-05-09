@@ -42,6 +42,13 @@ body {
 	font-size: 18px;
 	line-height: 1.5;
 	border-radius: 10px;
+	word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+	overflow-wrap: break-word; /* 강제 줄바꿈 */
+	word-break: break-word; /* 단어 단위로 박스 넘침 방지 */
+}
+.message-content ul {
+	padding-left: 1.5em; /* 채팅 버블 내부로 들여쓰기 유지 */
+	margin: 0; /* 기본 마진 제거 */
 }
 .message.bot .message-content {
 	background: #f1f1f2;
