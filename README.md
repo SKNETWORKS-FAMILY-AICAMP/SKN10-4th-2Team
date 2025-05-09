@@ -156,7 +156,6 @@
 3. 카테고리 분류 (wine, grape, region, producer, etc)
    ↓
 4. 카테고리에 따라 분기 처리
-
    ├─ [Greeting] → sLLM 응답 (즉시 반환)
    ├─ [ETC] → sLLM 응답 → 관련성 평가
    │            ├─ 관련성 있음 → 반환
