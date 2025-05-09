@@ -5,15 +5,14 @@ body {
 	margin: 0;
 	background: #f7f7f8;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+	min-height: 100vh;
 }
+
 .chat-wrapper {
 	width: 100%;
-	max-width: 800px;
-	height: 90vh;
+	max-width: 80vh;
+	margin: 48px auto 0; /* ✅ 수평 가운데 정렬 */
+	height: 80vh;
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
@@ -21,6 +20,7 @@ body {
 	flex-direction: column;
 	overflow: hidden;
 }
+
 .chat-box {
 	flex: 1;
 	padding: 20px;
@@ -42,6 +42,13 @@ body {
 	font-size: 18px;
 	line-height: 1.5;
 	border-radius: 10px;
+	word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+	overflow-wrap: break-word; /* 강제 줄바꿈 */
+	word-break: break-word; /* 단어 단위로 박스 넘침 방지 */
+}
+.message-content ul {
+	padding-left: 1.5em; /* 채팅 버블 내부로 들여쓰기 유지 */
+	margin: 0; /* 기본 마진 제거 */
 }
 .message.bot .message-content {
 	background: #f1f1f2;
