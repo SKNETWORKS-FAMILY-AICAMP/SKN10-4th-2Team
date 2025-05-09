@@ -5,15 +5,14 @@ body {
 	margin: 0;
 	background: #f7f7f8;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+	min-height: 100vh;
 }
+
 .chat-wrapper {
 	width: 100%;
-	max-width: 800px;
-	height: 90vh;
+	max-width: 80vh;
+	margin: 48px auto 0; /* ✅ 수평 가운데 정렬 */
+	height: 80vh;
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
@@ -21,6 +20,7 @@ body {
 	flex-direction: column;
 	overflow: hidden;
 }
+
 .chat-box {
 	flex: 1;
 	padding: 20px;

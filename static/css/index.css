@@ -1,134 +1,63 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
-    background: #ebecf0;
-    color: #333;
-    line-height: 1.6;
+	font-family: 'Montserrat', sans-serif;
+	background: #ebecf0;
+	color: #333;
+	line-height: 1.6;
 }
 
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #ebecf0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #ebecf0;
 }
 
 /* Content-specific */
 .content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+	text-align: center;
 }
 
 .content h2 {
-    background-color: #ffe5b4;
-    padding: 0.5rem;
-    margin-top: 1.5rem;
-    border-radius: 4px;
+	background-color: #ffe5b4;
+	padding: 0.5rem;
+	margin-top: 1.5rem;
+	border-radius: 4px;
 }
 
 .section-body {
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+	padding-left: 1rem;
+	margin-bottom: 1rem;
 }
 
 .preformatted {
-    white-space: pre-line;
+	white-space: pre-line;
 }
 
 /* Tables */
 .styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1rem;
 }
 
 .styled-table th,
 .styled-table td {
-    border: 1px solid #ccc;
-    padding: 0.75rem;
-    text-align: left;
+	border: 1px solid #ccc;
+	padding: 0.75rem;
+	text-align: left;
 }
 
 .styled-table thead {
-    background: #f2f2f2;
-}
-
-
-/* 네비게이션 바 */
-.navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #d63e31;
-    /* 와인 레드 계열 포인트 */
-    text-decoration: none;
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-}
-
-.nav-link {
-    font-size: 1rem;
-    color: #333333;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-    background-color: #f0eded;
-    color: #d63e31;
-}
-
-/* 반응형: 모바일 토글(간단 버전) */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 20px;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        width: 100%;
-        gap: 8px;
-        margin-top: 8px;
-    }
+	background: #f2f2f2;
 }
