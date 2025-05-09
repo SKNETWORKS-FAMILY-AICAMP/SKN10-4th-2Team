@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 def user_logout(request):
     # 로그아웃 요청
     logout(request)
-    return redirect('user-login-register')
+    return redirect('chatbot-index')
 
 # 로그인 및 회원가입
 def login_required(request):
