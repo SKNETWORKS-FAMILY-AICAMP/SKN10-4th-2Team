@@ -1,11 +1,13 @@
-{% extends 'base/index.html' %}
-{% load static %}
+<!-- prettier-ignore -->
+{% extends 'base/index.html' %} {% load static %} 
 {% block title %}와인초보 입문 가이드 챗봇{% endblock %}
 
+<!-- prettier-ignore -->
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 {% endblock %}
 
+<!-- prettier-ignore -->
 {% block content %}
 <div class="wrapper">
 	<div class="container content">
@@ -15,67 +17,67 @@
 		<!-- 1. 서비스 개요 -->
 		<h2>1. 서비스 개요</h2>
 		<div class="section-body">
-			와인 입문 챗봇은 와인에 대한 지식이 부족한 초보자를 위해,<br>
-			음식 페어링, 와인 용어 해석, 입문용 추천 정보를 AI 기반으로<br>
+			와인 입문 챗봇은 와인에 대한 지식이 부족한 초보자를 위해,<br />
+			음식 페어링, 와인 용어 해석, 입문용 추천 정보를 AI 기반으로<br />
 			정확하고 다단계 평가 방식으로 안내하는 맞춤형 챗봇 서비스입니다.
 		</div>
 
 		<!-- 2. 기획 배경 -->
 		<h2>2. 기획 배경</h2>
 		<div class="section-body">
-			🍇 <strong>와인 정보의 복잡함</strong><br>
-			&nbsp;&nbsp;라벨, 품종, 빈티지 등 구조화되지 않은 정보가 많아 진입장벽이 높음<br>
-			🧀 <strong>실용적인 음식 페어링 정보 부족</strong><br>
-			&nbsp;&nbsp;한식, 매운 음식 등 실생활 기반 궁합 정보 부족<br>
-			📱 <strong>비대면 와인 큐레이션 수요 증가</strong><br>
+			🍇 <strong>와인 정보의 복잡함</strong><br />
+			&nbsp;&nbsp;라벨, 품종, 빈티지 등 구조화되지 않은 정보가 많아 진입장벽이 높음<br />
+			🧀 <strong>실용적인 음식 페어링 정보 부족</strong><br />
+			&nbsp;&nbsp;한식, 매운 음식 등 실생활 기반 궁합 정보 부족<br />
+			📱 <strong>비대면 와인 큐레이션 수요 증가</strong><br />
 			&nbsp;&nbsp;홈술 트렌드와 입문자 증가로, 대화형 정보 탐색 니즈 확대
 		</div>
 
 		<!-- 3. UX 시나리오 -->
 		<h2>3. 사용자 경험 흐름 (UX 시나리오)</h2>
 		<div class="section-body">
-			✅ <strong>사용자 입력 단계</strong><br>
-			&nbsp;&nbsp;“삼겹살에 어울리는 와인 뭐가 있어요?”<br>
-			&nbsp;&nbsp;“까쇼 블렌딩이 뭔 뜻이에요?”<br>
-			&nbsp;&nbsp;“2~3만 원대 입문용 레드 추천해줘요”<br>
-			➡️ ‘와인 추천 받기’ 버튼 클릭<br><br>
+			✅ <strong>사용자 입력 단계</strong><br />
+			&nbsp;&nbsp;“삼겹살에 어울리는 와인 뭐가 있어요?”<br />
+			&nbsp;&nbsp;“까쇼 블렌딩이 뭔 뜻이에요?”<br />
+			&nbsp;&nbsp;“2~3만 원대 입문용 레드 추천해줘요”<br />
+			➡️ ‘와인 추천 받기’ 버튼 클릭<br /><br />
 
-			🤖 <strong>챗봇 응답 프로세스</strong><br>
-			&nbsp;&nbsp;1. 사용자 질문 → sLLM이 1차 응답 A 생성<br>
-			&nbsp;&nbsp;2. GPT-4o-mini가 A의 신뢰도와 연관성 평가<br>
-			&nbsp;&nbsp;3. 불충분 시 → FAISS 기반 RAG로 내부 문서 검색 → 응답 B 생성<br>
-			&nbsp;&nbsp;4. 다시 GPT-4o-mini가 B 평가<br>
-			&nbsp;&nbsp;5. 여전히 부족 시 → Tavily API로 외부 콘텐츠 요약 → 최종 응답 C 생성<br>
-			&nbsp;&nbsp;6. 사용자에게 가장 신뢰도 높은 결과 제공<br>
+			🤖 <strong>챗봇 응답 프로세스</strong><br />
+			&nbsp;&nbsp;1. 사용자 질문 → sLLM이 1차 응답 A 생성<br />
+			&nbsp;&nbsp;2. GPT-4o-mini가 A의 신뢰도와 연관성 평가<br />
+			&nbsp;&nbsp;3. 불충분 시 → FAISS 기반 RAG로 내부 문서 검색 → 응답 B 생성<br />
+			&nbsp;&nbsp;4. 다시 GPT-4o-mini가 B 평가<br />
+			&nbsp;&nbsp;5. 여전히 부족 시 → Tavily API로 외부 콘텐츠 요약 → 최종 응답 C 생성<br />
+			&nbsp;&nbsp;6. 사용자에게 가장 신뢰도 높은 결과 제공<br />
 			&nbsp;&nbsp;→ 다단계 필터링으로 정확도 높은 추천 및 설명 제공
 		</div>
 
 		<!-- 4. 기술 구성 요소 -->
 		<h2>4. 기술 구성 요소</h2>
 		<div class="section-body">
-			🧠 <strong>LLM 및 평가 모델</strong><br>
-			&nbsp;&nbsp;- 1차 응답: Fine-tuned sLLM (와인 용어·페어링 문체 학습)<br>
-			&nbsp;&nbsp;- 평가: GPT-4o-mini (OpenAI API 기반)<br><br>
+			🧠 <strong>LLM 및 평가 모델</strong><br />
+			&nbsp;&nbsp;- 1차 응답: Fine-tuned sLLM (와인 용어·페어링 문체 학습)<br />
+			&nbsp;&nbsp;- 평가: GPT-4o-mini (OpenAI API 기반)<br /><br />
 
-			🔍 <strong>검색 기반 QA (RAG)</strong><br>
-			&nbsp;&nbsp;- 부정확 시 → FAISS 내부 문서 벡터 검색<br>
-			&nbsp;&nbsp;- 관련 콘텐츠 주입 후 재생성<br>
-			&nbsp;&nbsp;- 필요 시 Tavily 웹 검색으로 보완<br><br>
+			🔍 <strong>검색 기반 QA (RAG)</strong><br />
+			&nbsp;&nbsp;- 부정확 시 → FAISS 내부 문서 벡터 검색<br />
+			&nbsp;&nbsp;- 관련 콘텐츠 주입 후 재생성<br />
+			&nbsp;&nbsp;- 필요 시 Tavily 웹 검색으로 보완<br /><br />
 
-			💻 <strong>시스템 구성</strong><br>
-			&nbsp;&nbsp;- 백엔드: Django (Python)<br>
-			&nbsp;&nbsp;- 프론트엔드: HTML, CSS, Django Template<br>
+			💻 <strong>시스템 구성</strong><br />
+			&nbsp;&nbsp;- 백엔드: Django (Python)<br />
+			&nbsp;&nbsp;- 프론트엔드: HTML, CSS, Django Template<br />
 			&nbsp;&nbsp;- 모듈 흐름: 입력 → sLLM → GPT-4o-mini → RAG → Tavily
 		</div>
 
 		<!-- 5. 데이터 소스 -->
 		<h2>5. 데이터 소스</h2>
 		<div class="section-body">
-			• <strong>내부 문서</strong><br>
-			&nbsp;&nbsp;- 한국와인협회 초보자 가이드, 수입사 교육자료 (PDF→텍스트 전처리)<br>
-			&nbsp;&nbsp;- 음식별 와인 페어링 추천표<br><br>
-			• <strong>외부 콘텐츠</strong><br>
-			&nbsp;&nbsp;- 유튜브 자막 (와인앤모어, 비노빈센트)<br>
+			• <strong>내부 문서</strong><br />
+			&nbsp;&nbsp;- 한국와인협회 초보자 가이드, 수입사 교육자료 (PDF→텍스트 전처리)<br />
+			&nbsp;&nbsp;- 음식별 와인 페어링 추천표<br /><br />
+			• <strong>외부 콘텐츠</strong><br />
+			&nbsp;&nbsp;- 유튜브 자막 (와인앤모어, 비노빈센트)<br />
 			&nbsp;&nbsp;- 와인 리뷰 블로그·마트 콘텐츠 (출처 표시 및 요약)
 		</div>
 
@@ -136,24 +138,16 @@
 		<!-- 8. 기대 효과 -->
 		<h2>8. 기대 효과</h2>
 		<div class="section-body">
-			✅ 와인 입문자의 학습과 실용 소비 지원<br>
-			✅ 정확한 추천 및 해설로 신뢰성 있는 콘텐츠 제공<br>
+			✅ 와인 입문자의 학습과 실용 소비 지원<br />
+			✅ 정확한 추천 및 해설로 신뢰성 있는 콘텐츠 제공<br />
 			✅ 와인 문화 확산 및 커머스 연계 가능성 확보
 		</div>
 
 		<!-- 9. 응답 생성 프로세스 요약 -->
 		<h2>9. 응답 생성 프로세스 요약</h2>
 		<div class="section-body preformatted">
-			[사용자 질문 입력]
-			↓
-			[Fine-tuned sLLM이 1차 응답 생성]
-			↓
-			[GPT-4o-mini가 평가 → 부정확 시]
-			↓
-			[FAISS로 내부 문서 검색 → 응답 재생성]
-			↓
-			[여전히 부족 시 Tavily로 웹 검색 요약]
-			↓
+			[사용자 질문 입력] ↓ [Fine-tuned sLLM이 1차 응답 생성] ↓ [GPT-4o-mini가 평가 → 부정확
+			시] ↓ [FAISS로 내부 문서 검색 → 응답 재생성] ↓ [여전히 부족 시 Tavily로 웹 검색 요약] ↓
 			[최종 응답 + 후속 추천 제공]
 		</div>
 	</div>

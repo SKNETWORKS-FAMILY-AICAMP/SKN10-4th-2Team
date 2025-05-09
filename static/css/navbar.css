@@ -28,6 +28,10 @@
 	text-decoration: none;
 }
 
+.nav-logo #logo {
+	margin-top: 8px;
+	width: 110px;
+}
 .nav-menu {
 	list-style: none;
 	display: flex;
