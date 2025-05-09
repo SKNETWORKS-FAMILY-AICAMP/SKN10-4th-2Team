@@ -37,13 +37,15 @@
 ### 🤖 챗봇 응답 프로세스
 
 ```markdown
-1. 사용자 질문 입력
-2. sLLM이 1차 응답 A 생성
-3. GPT-4o-mini가 응답 A의 적절성 평가
-4. 불충분 시 → FAISS 기반 RAG로 내부 문서 검색 → 응답 B 생성
-5. 다시 GPT-4o-mini가 B 평가
-5. 여전히 부족하면 → Tavily API를 통해 외부 콘텐츠 요약 → 응답 C 생성
-6. 최종적으로 신뢰도가 가장 높은 응답 제공
+1. 사용자 로그인 및 회원가입
+2. 사용자 로그인 여부 확인
+3. 사용자 질문 입력
+4. sLLM이 1차 응답 A 생성
+5. GPT-4o-mini가 응답 A의 적절성 평가
+6. 불충분 시 → FAISS 기반 RAG로 내부 문서 검색 → 응답 B 생성
+7. GPT-4o-mini가 응답 B의 적절성 평가
+8. 불충분 시 → Tavily API를 통해 외부 콘텐츠 요약 → 응답 C 생성
+9. 최종적으로 신뢰도가 가장 높은 응답 제공
 ```
 
 <br>
@@ -63,7 +65,7 @@
 ### 💻 시스템 구성
 - 백엔드: Django (Python)
 - 프론트엔드: HTML, CSS, Django Template 기반 UI
-- 모듈 흐름: 사용자 입력 → sLLM → GPT-4o-mini → RAG 검색 → Tavily 보완
+- 모듈 흐름: 사용자 입력 → sLLM → 응답 GPT-4o-mini 평가 → RAG 검색 → 응답 GPT-4o-mini 평가 → Tavily 보완
 
 <br>
 
@@ -106,7 +108,6 @@
 - 자막 내 불필요한 요소(특수문자, 이모티콘 등) 제거
 - 와인과 직접적인 관련이 없는 단어 또는 문장 제거
 - 음성 인식 오류로 잘못 표기된 단어 수정
-- 띄어쓰기 
 
 ### 3. 질문-답변 데이터셋 생성
 
@@ -145,11 +146,15 @@
 ## 9. 응답 생성 및 서비스 동작 프로세스
 
 ```markdown
-1. 사용자 질문 입력
+[ Login / Register ]
+1. 사용자 회원가입 및 로그인
+
+[ Chatbot ]
+2. 사용자 질문 입력
    ↓
-2. 카테고리 분류 (wine, grape, region, producer, etc)
+3. 카테고리 분류 (wine, grape, region, producer, etc)
    ↓
-3. 카테고리에 따라 분기 처리
+4. 카테고리에 따라 분기 처리
 
    ├─ [Greeting] → LLM 응답 (즉시 반환)
    ├─ [ETC] → LLM 응답 → 관련성 평가
@@ -161,18 +166,18 @@
    │
    └─ [ wine / grape / region / producer ]
          ↓
-      4. Multi Query 생성 (서브 질문 2개)
+      5. Multi Query 생성 (서브 질문 2개)
          ↓
-      5. 각 서브 질문에 대해 LLM 응답 생성
+      6. 각 서브 질문에 대해 LLM 응답 생성
          ↓
-      6. 관련성 평가 (GPT-4o-mini)
+      7. 관련성 평가 (GPT-4o-mini)
          └─ 관련성 있는 응답이 있다면 → 저장
          ↓
-      7. 내부 문서 검색 (FAISS + CrossEncoder Reranker)
+      8. 내부 문서 검색 (FAISS + CrossEncoder Reranker)
          ↓
-      8. 문서 기반 응답 생성 (Gemma2-9b-it)
+      9. 문서 기반 응답 생성 (Gemma2-9b-it)
          ↓
-      9. 관련성 평가
+      10. 관련성 평가
          ├─ 관련성 있음 → ✅ 반환
          └─ 관련성 없음
                ├─ 서브 질문 LLM 응답 중 최고 관련 응답이 있다면 → ✅ 반환
