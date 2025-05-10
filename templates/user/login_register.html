@@ -1,15 +1,23 @@
 <!-- prettier-ignore -->
-{% extends 'base/index.html' %} {% block title %}로그인-회원가입{% endblock %} {% block css %} 
+{% extends 'base/index.html' %}
+{% block title %}로그인-회원가입{% endblock %}
+{% block css %} 
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
 <link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
 <link
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
 	rel="stylesheet" />
-{% endblock %} {% block js %} {% load static %}
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block js %} {% load static %}
 <script src="{% static 'js/login_register.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-{% endblock %} {% block content %}
+{% endblock %}
+
 <!-- prettier-ignore -->
+{% block content %}
 {% csrf_token %}
 <div class="wrapper">
 	{% if messages %}
@@ -46,6 +54,7 @@
 
 		<div class="overlay-container">
 			<div class="overlay-left">
+				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
 				<button id="signIn" class="overlay_btn">Sign In</button>
 			</div>
