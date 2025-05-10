@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 import json
 
 # RAG 파이프라인 모듈 임포트
 from .rag.pipeline import get_final_answer
 
 def index(request):
-    return render(request, 'chatbot/index.html')
+    return render(request, 'chatbot/main.html')
 
+@login_required(login_url='/user/login-register/')
 def chat(request):
     if request.method == 'POST':
         data = json.loads(request.body)

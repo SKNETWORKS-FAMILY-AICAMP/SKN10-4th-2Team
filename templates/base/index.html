@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,11 +6,49 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{% block title %} {% endblock %}</title>
 		{% block css %} {% endblock %}
+		<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 	</head>
 	<body>
+		<nav class="navbar">
+			<div class="nav-container">
+				<a href="{% url 'chatbot-index' %}" class="nav-logo">
+					<img src="{% static 'img/logo.png' %}" alt="Logo" id="logo" />
+				</a>
+
+				<div class="nav-toggle" id="nav-toggle">
+					<i class="fa fa-bars"></i>
+				</div>
+
+				<ul class="nav-menu" id="nav-menu">
+					<li class="nav-item">
+						<a href="{% url 'chatbot-chat' %}" class="nav-link">ChatBot</a>
+					</li>
+					{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a href="{% url 'user-logout' %}" class="nav-link">Logout</a>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a href="{% url 'user-login-register' %}" class="nav-link">Login</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+
 		{% block content %} {% endblock %}
 
 		<!-- prettier-ignore -->
 		{% block js %} {% endblock %}
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const toggle = document.getElementById('nav-toggle');
+				const menu = document.getElementById('nav-menu');
+
+				toggle.addEventListener('click', () => {
+					menu.classList.toggle('active');
+				});
+			});
+		</script>
 	</body>
 </html>
