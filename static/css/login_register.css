@@ -28,21 +28,18 @@ body {
 	width: 768px;
 	min-height: 480px;
 	overflow: hidden;
+	background: #ebecf0;
+	transition: all 0.6s ease-in-out;
 }
 
-/* 메시지 스타일 추가 */
+/* 메시지 스타일 */
 .message-container {
 	position: absolute;
 	top: 20px;
-	/* .wrapper 맨 위에서 20px 아래 */
 	left: 50%;
-	/* 가로 중앙 */
 	transform: translateX(-50%);
 	z-index: 1000;
-
-	/* 박스 형태 스타일 */
 	background-color: #f0fdf4;
-	/* 연한 초록(성공) / 필요시 error용 따로 덮어쓰기 */
 	padding: 10px 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -107,39 +104,28 @@ button {
 	box-shadow: -5px -5px 10px #ff6b3f, 5px 5px 8px #bf4b2b;
 }
 
-.sign-in-container {
-	position: absolute;
-	left: 0;
-	width: 50%;
-	height: 100%;
-	transition: all 0.5s;
-}
-
+.sign-in-container,
 .sign-up-container {
 	position: absolute;
 	left: 0;
 	width: 50%;
 	height: 100%;
-	opacity: 0;
-	transition: all 0.5s;
+	transition: all 0.5s ease-in-out;
 }
 
-.overlay-left {
-	display: flex;
-	flex-direction: column;
-	padding: 0 50px;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	right: 0;
-	width: 50%;
-	height: 100%;
-	opacity: 0;
-	background-color: #ff4b2b;
-	color: #fff;
-	transition: all 0.5s;
+.sign-in-container {
+	transform: translateX(0%);
+	z-index: 2;
+	opacity: 1;
 }
 
+.sign-up-container {
+	transform: translateX(0%);
+	z-index: 1;
+	opacity: 0;
+}
+
+.overlay-left,
 .overlay-right {
 	display: flex;
 	flex-direction: column;
@@ -152,12 +138,26 @@ button {
 	height: 100%;
 	background-color: #ff4b2b;
 	color: #fff;
-	transition: all 0.5s;
+	transition: all 0.5s ease-in-out;
 }
 
+.overlay-left {
+	opacity: 0;
+	z-index: 1;
+	transform: translateX(0%);
+}
+
+.overlay-right {
+	opacity: 1;
+	z-index: 2;
+	transform: translateX(0%);
+}
+
+/* 전환 상태 (회원가입 보기) */
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
 	opacity: 0;
+	z-index: 1;
 }
 
 .container.right-panel-active .sign-up-container {
@@ -169,6 +169,7 @@ button {
 .container.right-panel-active .overlay-right {
 	transform: translateX(-100%);
 	opacity: 0;
+	z-index: 1;
 }
 
 .container.right-panel-active .overlay-left {
@@ -219,4 +220,77 @@ span {
 
 .social-links div:active {
 	box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+/* 사용자 권한 선택 라디오 버튼 */
+.role-selection {
+	display: flex;
+	justify-content: center;
+	gap: 2em;
+	margin: 10px 0;
+}
+
+.control-container {
+	display: flex;
+	position: relative;
+}
+
+.screen-reader {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	margin: -1px;
+	clip-path: inset(50%);
+}
+
+.label-box {
+	position: relative;
+}
+
+.check-icon {
+	width: 1.8em;
+	height: 1.8em;
+	border-radius: 50%;
+	background-color: #fff;
+	border: 2px solid gray;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.check-icon::before {
+	content: '';
+	position: absolute;
+	box-sizing: border-box;
+	width: 35%;
+	height: 60%;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-70%) rotateZ(40deg);
+	border-right: 2px solid gray;
+	border-bottom: 2px solid gray;
+}
+
+[type='radio']:checked + .label-box .check-icon {
+	border-color: #ff4b2b;
+	background-color: #ff4b2b;
+}
+
+[type='radio']:checked + .label-box .check-icon::before {
+	border-color: #fff;
+}
+
+[type='radio']:checked + .label-box label {
+	color: #ff4b2b;
+}
+
+label {
+	padding-left: 2.5em;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
 }
