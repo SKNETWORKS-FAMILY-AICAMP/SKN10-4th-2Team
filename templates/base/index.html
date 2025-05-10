@@ -24,6 +24,14 @@
 						<a href="{% url 'chatbot-chat' %}" class="nav-link">ChatBot</a>
 					</li>
 					{% if user.is_authenticated %}
+					<!-- prettier-ignore -->
+					{% if user.is_superuser %}
+					<li class="nav-item">
+						<a href="{% url 'admin:user_customuser_changelist' %}" class="nav-link"
+							>관리자 페이지</a
+						>
+					</li>
+					{% endif %}
 					<li class="nav-item">
 						<a href="{% url 'user-logout' %}" class="nav-link">Logout</a>
 					</li>

@@ -12,11 +12,13 @@ class CustomUserAdmin(UserAdmin):
     # 삭제 기능 활성화
     actions = ['delete_selected']
 
-    # 일반 사용자만 삭제 가능하도록 제한
     def has_delete_permission(self, request, obj=None):
-        if obj and obj.is_superuser:
-            return False
+        if obj:
+            # 'admin'이라는 username을 가진 superuser만 삭제 금지
+            if obj.is_superuser and obj.username == 'admin':
+                return False
         return True
+
 
     fieldsets = (
         (None, {'fields': ('username', 'email', 'password')}),

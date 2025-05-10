@@ -292,5 +292,11 @@ label {
 	padding-left: 2.5em;
 	font-weight: 600;
 	font-size: 1rem;
+}
+
+.control-container,
+.label-box,
+.check-icon,
+label {
 	cursor: pointer;
 }
