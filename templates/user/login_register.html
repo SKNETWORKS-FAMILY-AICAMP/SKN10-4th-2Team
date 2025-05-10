@@ -3,17 +3,11 @@
 {% block title %}로그인-회원가입{% endblock %}
 {% block css %} 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+<link rel="stylesheet" href="{% static 'css/main.css' %}" />
 <link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
 <link
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
 	rel="stylesheet" />
-{% endblock %}
-
-<!-- prettier-ignore -->
-{% block js %} {% load static %}
-<script src="{% static 'js/login_register.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% endblock %}
 
 <!-- prettier-ignore -->
@@ -37,7 +31,37 @@
 				<input type="text" placeholder="Username" name="username" required />
 				<input type="email" placeholder="Email" name="email" required />
 				<input type="password" placeholder="Password" name="password" required />
-				<button class="form_btn">Sign Up</button>
+
+				<!-- 관리자 / 사용자 선택 -->
+				<div class="role-selection">
+					<div class="control-container">
+						<input
+							type="radio"
+							checked
+							name="role"
+							id="role-user"
+							value="user"
+							class="screen-reader" />
+						<div class="label-box">
+							<span class="check-icon" aria-hidden="true"></span>
+							<label for="role-user">사용자</label>
+						</div>
+					</div>
+					<div class="control-container">
+						<input
+							type="radio"
+							name="role"
+							id="role-admin"
+							value="admin"
+							class="screen-reader" />
+						<div class="label-box">
+							<span class="check-icon" aria-hidden="true"></span>
+							<label for="role-admin">관리자</label>
+						</div>
+					</div>
+				</div>
+
+				<button class="form_btn" type="submit">Sign Up</button>
 			</form>
 		</div>
 
@@ -48,7 +72,7 @@
 				<h1>Sign In</h1>
 				<input type="text" placeholder="Username" name="username" required autofocus />
 				<input type="password" placeholder="Password" name="password" required />
-				<button class="form_btn">Sign In</button>
+				<button class="form_btn" type="submit">Sign In</button>
 			</form>
 		</div>
 
@@ -66,4 +90,10 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block js %} {% load static %}
+<script src="{% static 'js/login_register.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% endblock %}
