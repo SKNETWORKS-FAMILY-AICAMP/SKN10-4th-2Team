@@ -1,5 +1,6 @@
 # Django + DB
 django
+gunicorn
 mysqlclient
 
 # OpenAI API
