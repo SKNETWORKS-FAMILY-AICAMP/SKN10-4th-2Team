@@ -1,18 +1,25 @@
 FROM python:3.12
 
-# 로컬의 django_server 폴더를 컨테이너의 /app 폴더로 복사합니다.
+# ✅ 코드 및 파일 복사
 COPY ./django_server /app
-
-# entrypoint.sh 스크립트를 컨테이너의 /app/entrypoint.sh로 복사합니다.
 COPY ./entrypoint.sh /app/entrypoint.sh
+COPY ./models /models
+COPY ./Modelfile /Modelfile
 
-# 작업 디렉토리를 /app으로 설정합니다.
+# ✅ 작업 디렉토리 설정
 WORKDIR /app
 
-# pip을 최신 버전으로 업그레이드하고,
-# requirements.txt에 명시된 패키지를 설치합니다.
-RUN pip install --upgrade pip \
-    && pip install -r /app/requirements.txt
+# ✅ Ollama 및 시스템 패키지 설치
+RUN apt-get update && \
+    apt-get install -y curl gnupg2 && \
+    curl -fsSL https://ollama.com/install.sh | sh && \
+    apt-get clean
 
-# 컨테이너가 시작될 때 entrypoint.sh를 실행합니다.
+# ✅ Python 패키지 설치
+RUN pip install --upgrade pip && \
+    pip install -r /app/requirements.txt
+
+# ✅ entrypoint 실행 권한 부여
+RUN chmod +x /app/entrypoint.sh
+
 ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]

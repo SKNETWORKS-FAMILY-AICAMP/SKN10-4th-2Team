@@ -35,22 +35,22 @@ def classify_category(user_question: str) -> str:
         if name in lowered_question:
             return "producer"
 
-    greetings = ["안녕", "안녕하세요", "하이", "hello", "ㅎㅇ", "반가워", "잘 지냈어", "굿모닝", "오랜만", "하이요"]
+    greetings = ["안녕", "안녕하세요", "하이", "hello", "반가워", "굿모닝", "오랜만"]
     if any(greet in lowered_question for greet in greetings):
         return "greeting"
 
     # fallback: GPT-4o-mini 분류
     prompt = f"""다음 사용자 질문을 가장 적절한 카테고리로 분류해줘. 
-카테고리는 다음 중 하나야: wine, grape, region, producer, etc
+    카테고리는 다음 중 하나야: wine, grape, region, producer, etc
 
-- 와인 추천, 가격, 종류, 향, 음식 매칭은 모두 'wine'
-- 특정 와인 생산지에 대한 질문은 'region'
-- 포도 품종에 대한 질문은 'grape'
-- 와인 제조사, 브랜드 관련 질문은 'producer'
-- 위에 해당하지 않으면 'etc'
+    - 와인 추천, 가격, 종류, 향, 음식 매칭은 모두 'wine'
+    - 특정 와인 생산지에 대한 질문은 'region'
+    - 포도 품종에 대한 질문은 'grape'
+    - 와인 제조사, 브랜드 관련 질문은 'producer'
+    - 위에 해당하지 않으면 'etc'
 
-사용자 질문: "{user_question}"
-카테고리:"""
+    사용자 질문: "{user_question}"
+    카테고리:"""
 
     response = openai.chat.completions.create(
         model="gpt-4o-mini",

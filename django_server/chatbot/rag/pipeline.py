@@ -1,4 +1,4 @@
-import subprocess
+import requests
 import re
 from .classification import classify_category
 from .multiquery import generate_multi_queries
@@ -14,8 +14,7 @@ def strip_badge(text: str) -> str:
 
 def sllm_answer(prompt: str, category: str = None, history: list = None) -> str:
     """
-    로컬 Ollama에서 gemma3-wine:latest 모델을 사용하여 응답 생성.
-    이전 히스토리와 함께 자연스럽고 전문적인 와인 관련 응답 생성.
+    로컬 Ollama에서 gemma3-wine 모델을 사용하여 REST API로 응답 생성.
     """
     system_prompt = (
         """
@@ -41,32 +40,65 @@ def sllm_answer(prompt: str, category: str = None, history: list = None) -> str:
         """
     )
 
-    # 시스템 프롬프트와 유저 입력을 하나로 연결
     full_prompt = f"{system_prompt}\n\n{prompt}"
 
     try:
-        # Ollama 명령어로 subprocess 실행
-        result = subprocess.run(
-            ["ollama", "run", "gemma3-wine:latest"],
-            input=full_prompt.encode(),  # 프롬프트를 바이트로 변환하여 전달
-            stdout=subprocess.PIPE,      # 표준 출력을 캡처
-            stderr=subprocess.PIPE,      # 오류 출력을 캡처
-            timeout=300                    # 타임아웃 설정 (300초)
+        response = requests.post(
+            "http://localhost:11434/api/generate",  # Ollama REST API 엔드포인트
+            json={
+                "model": "gemma3-wine",  # 정확한 모델 이름
+                "prompt": full_prompt,
+                "stream": False
+            },
+            timeout=60  # 초 단위 타임아웃
         )
-        
-        # 오류가 발생하면 stderr를 출력
-        if result.returncode != 0:
-            return f"[오류] Ollama 실행 실패: {result.stderr.decode()}"
 
-        # 표준 출력에서 응답 내용 추출
-        return result.stdout.decode()
+        if response.status_code == 200:
+            return response.json().get("response", "")
+        else:
+            return f"[오류] Ollama API 호출 실패: {response.text}"
 
-    except Exception as e:
-        return f"[오류] subprocess 실행 중 예외 발생: {e}"
+    except requests.exceptions.RequestException as e:
+        return f"[오류] Ollama API 요청 중 예외 발생: {e}"
 
+def sllm_greeting_answer(prompt: str, category: str = None, history: list = None) -> str:
+    """
+    로컬 Ollama에서 gemma3-wine 모델을 사용하여 REST API로 응답 생성.
+    """
+    system_prompt = (
+        """
+        당신은 와인 분야에 특화된 전문적인 AI 큐레이터입니다.
+        사용자 인사에 대해 친절하게 답변해주세요.
 
+        - 반드시 "HTML 태그를 포함한 실제 HTML 형식"으로 출력해주세요.
+        - 절대 ```html 또는 코드블록처럼 감싸지 마세요.
+        - <br>, <b>, <i> 등의 HTML 태그를 자유롭게 사용해 시각적으로 보기 좋게 작성해주세요.
 
+        질문: {question}
+        """
+    )
 
+    full_prompt = f"{system_prompt}\n\n{prompt}"
+
+    try:
+        response = requests.post(
+            "http://localhost:11434/api/generate",  # Ollama REST API 엔드포인트
+            json={
+                "model": "gemma3-wine",  # 정확한 모델 이름
+                "prompt": full_prompt,
+                "stream": False
+            },
+            timeout=60  # 초 단위 타임아웃
+        )
+
+        if response.status_code == 200:
+            return response.json().get("response", "")
+        else:
+            return f"[오류] Ollama API 호출 실패: {response.text}"
+
+    except requests.exceptions.RequestException as e:
+        return f"[오류] Ollama API 요청 중 예외 발생: {e}"
+    
 def get_final_answer(user_question: str, history: list) -> str:
     """
     전체 질문 흐름을 처리하는 메인 파이프라인 함수.
@@ -81,7 +113,7 @@ def get_final_answer(user_question: str, history: list) -> str:
     badge = ""
 
     if category == "greeting":
-        answer = sllm_answer(user_question, category, history)
+        answer = sllm_greeting_answer(user_question, category, history)
         badge = "🧠 LLM"
 
     elif category == "etc":
