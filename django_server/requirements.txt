@@ -16,7 +16,7 @@ langchain-openai
 faiss-cpu
 pandas
 
-# LangGraph (💡 추가된 부분)
+# LangGraph
 langgraph
 
 # RAG
