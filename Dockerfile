@@ -3,7 +3,6 @@ FROM python:3.12
 # ✅ 코드 및 파일 복사
 COPY ./django_server /app
 COPY ./entrypoint.sh /app/entrypoint.sh
-COPY ./models /models
 COPY ./Modelfile /Modelfile
 
 # ✅ 작업 디렉토리 설정
