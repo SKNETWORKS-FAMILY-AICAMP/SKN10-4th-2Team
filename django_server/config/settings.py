@@ -9,12 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-cug%d3oizain$v6xridqrp6ls5pl)qef4o0d=zi1#^4pvte43y'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'user.CustomUser'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -68,11 +68,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'miniproj4_db',
-        'USER': 'miniproj4_root',
-        'PASSWORD': 'r1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': os.getenv("MYSQL_DB"),
+        'USER': os.getenv("MYSQL_USER"),
+        'PASSWORD': os.getenv("MYSQL_PASSWORD"),
+        'HOST': os.getenv("MYSQL_HOST"),
+        'PORT': os.getenv("MYSQL_PORT"),
     }
 }
 
@@ -117,3 +117,7 @@ STATICFILES_DIRS = (STATIC_PATH,)
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost"
+]
