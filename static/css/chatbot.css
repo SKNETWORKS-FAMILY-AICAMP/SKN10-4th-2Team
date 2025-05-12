@@ -77,7 +77,9 @@ body {
 	overflow-wrap: break-word; /* 강제 줄바꿈 */
 	word-break: break-word; /* 단어 단위로 박스 넘침 방지 */
 }
-
+.message-content ul {
+	padding-left: 20px;
+}
 .message.bot .message-content {
 	background: var(--card-bg);
 	/* main.css 카드배경 */
