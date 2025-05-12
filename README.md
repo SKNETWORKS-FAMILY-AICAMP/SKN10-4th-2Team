@@ -188,6 +188,11 @@
 | 구매 가이드 | 입문자용 와인 가격대, 인기 품종 추천                   | 가격대별 추천 와인 및 선택 팁 제공    |
 | 음식 페어링 | 삼겹살, 매운탕, 치즈 등 일상 음식과 어울리는 와인 추천 | 추천 와인 및 페어링 이유 제공         |
 
+### 시연 화면
+![Image](https://github.com/user-attachments/assets/0e01b306-30e5-4e70-ba6d-b40f8c3b0a5d)
+![Image](https://github.com/user-attachments/assets/a2237180-a633-46fa-ad56-c5e34e744006)
+![Image](https://github.com/user-attachments/assets/c6359d21-f2dc-44e4-bb9e-acf6a48653a2)
+
 <br>
 
 ## 7. 확장 가능성 및 고도화 아이디어
