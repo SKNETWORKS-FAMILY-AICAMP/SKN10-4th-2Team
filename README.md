@@ -1,10 +1,12 @@
 # SKN10-4th-2Team
+개발 기간 : 2025.05.09 ~ 2025.05.12
 
-<br/>
+팀장 : 문승기
 
-## VINO
+팀원 : 배민경 신민주 좌민서 홍승표
 
-**와인 입문 가이드 챗봇**
+## VINO - **와인 입문 가이드 챗봇**
+![Image](https://github.com/user-attachments/assets/bc165d75-9bcf-4e68-8044-b87e811f8aea)
 
 <br>
 
