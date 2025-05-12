@@ -244,6 +244,15 @@ Hugging Face에 등록된 모델을 사용하기 위해 `.gguf` 파일을 다운
 GROQ_API_KEY=[groq_api_key]
 OPENAI_API_KEY=[openai_api_key]
 HF_TOKEN=[huggingface_token_api_key]
+
+SECRET_KEY=[django_secret_key]
+DEBUG=[True_or_False]
+
+MYSQL_DB=[mysql_db_name]
+MYSQL_USER=[mysql_username]
+MYSQL_PWD=[mysql_password]
+MYSQL_HOST=[mysql_host]
+MYSQL_PORT=[mysql_port]
 ```
 
 ### 5. 실행
