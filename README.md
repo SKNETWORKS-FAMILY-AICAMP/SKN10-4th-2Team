@@ -1,6 +1,6 @@
 # SKN10-4th-2Team
 
-개발 기간 : 2025.05.09 ~ 2025.05.12
+**개발 기간** : 2025.05.09 ~ 2025.05.12
 
 <table align=center>
   <tbody>
@@ -38,6 +38,8 @@
     </tr>
   </tbody>
 </table>
+
+<br>
 
 ## VINO - **와인 입문 가이드 챗봇**
 
@@ -262,7 +264,7 @@ python manage.py runserver
 
 [**Hugging Face 모델**](https://huggingface.co/Minkyeong2/gemma3-Wine-Guide-gguf) 페이지에서 `.gguf` 확장자를 가진 파일을 다운로드한다.
 
-<img src='imgs/1_model_download.png' width=800>
+<img src='https://github.com/user-attachments/assets/842ba5bd-f867-48e1-b2b2-a98668d6b45c' width=800>
 
 ### 2. Modelfile을 통한 모델 설치
 
@@ -270,7 +272,7 @@ python manage.py runserver
 
 Hugging Face에서 다운로드한 `.gguf` 파일과 `Modelfile`을 동일한 디렉토리에 위치시킨다.
 
-<img src='imgs/2_file_location.png' width=600>
+<img src='https://github.com/user-attachments/assets/f9c2c01d-e959-431b-818f-461e151c6090' width=600>
 
 #### 2-2. Modelfile 수정
 
@@ -307,7 +309,7 @@ ollama create gemma3-wine -f Modelfile
 
 설치가 완료되면 `ollama list` 명령어로 모델이 추가된 것을 확인할 수 있다.
 
-<img src='imgs\3_ollama_list.png' width=600>
+<img src='https://github.com/user-attachments/assets/4ac8d91f-8546-41d1-b57e-6e86f4d4f520' width=600>
 
 <br>
 
@@ -317,24 +319,24 @@ ollama create gemma3-wine -f Modelfile
 
 ![Image](https://github.com/user-attachments/assets/79e49e71-3a67-4847-a0dc-7da61436c053)
 
-### 원인
+#### 원인
 
 -   컨테이너 이미지를 pull하거나 layer를 추출하는 과정에서 **작업 노드의 디스크 용량 부족**으로 인해 실패함.
 
-### 해결 방법
+#### 해결 방법
 
 -   결국 CICD를 구축하는 것은 완성하지 못했으나, 찾아본 방법으로는 EC2 컨테이너에 파인튜닝된 모델을 업로드 하여, CICD 파이프라인에 연결한다면, 문제 없이 구축될 가능성을 확인했다.
 
 <br>
 
-### 1. Django Admin
+### 2. Django Admin
 
-### 원인
+#### 원인
 
 -   CustomUserAdmin에서 슈퍼유저 권한에 대한 메서드를 설정하지 않아, 슈퍼유저임에도 Admin 화면에서 추가·수정·삭제·조회 기능이 제한됨.
     특히 has_delete_permission만 커스터마이즈하면서 다른 권한 메서드를 건드리지 않아, 슈퍼유저도 일부 권한이 비활성화되는 상황 발생
 
-### 해결 방법
+#### 해결 방법
 
 -   슈퍼유저가 모든 기능을 사용할 수 있도록 메서드들을 오버라이드하고, 로그인한 사용자가 superuser일 때 관리자로서 권한을 사용할 수 있도록 설정.
 
