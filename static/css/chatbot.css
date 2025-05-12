@@ -1,124 +1,187 @@
-* {
-	box-sizing: border-box;
-}
-body {
-	margin: 0;
-	background: #f7f7f8;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	min-height: 100vh;
+/* chatbot.css */
+/* 1) 폰트 임포트(메인과 동일) */
+@font-face {
+	font-family: 'Binggrae';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff')
+		format('woff');
 }
 
+/* 2) 메인 페이지 변수 활용 */
+:root {
+	/* main.css 에 이미 선언된 변수들을 재사용 */
+	/* --main-dark, --main-light, --accent-dark, --accent-light, --font */
+	--main-dark: #87064f;
+	--main-light: #fff9ee;
+	--accent-dark: #159356;
+	--accent-light: #1e3e2f;
+	--font: 'Binggrae', sans-serif;
+}
+
+body {
+	background: white;
+}
+
+/* 3) 챗봇 래퍼 */
 .chat-wrapper {
 	width: 100%;
-	max-width: 80vh;
-	margin: 48px auto 0; /* ✅ 수평 가운데 정렬 */
-	height: 80vh;
-	background: #fff;
+	max-width: 1200px;
+	margin: 60px auto 2rem;
+	/* navbar 높이만큼 띄우기 */
+	height: calc(100vh - 60px);
+	margin: 60px auto 0;
+	max-width: 768px;
+	background: var(--main-light);
 	border-radius: 12px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	font-family: var(--font);
 }
 
+/* 4) 채팅 영역 */
 .chat-box {
 	flex: 1;
-	padding: 20px;
+	padding: 1rem;
 	overflow-y: auto;
 }
+
+/* 5) 메시지 배치 */
 .message {
 	display: flex;
-	margin-bottom: 16px;
+	margin-bottom: 1rem;
 }
+
 .message.bot {
 	justify-content: flex-start;
 }
+
 .message.user {
 	justify-content: flex-end;
 }
+
+/* 6) 말풍선 */
 .message-content {
-	max-width: 80%;
-	padding: 12px 16px;
-	font-size: 18px;
-	line-height: 1.5;
-	border-radius: 10px;
+	max-width: 60%;
+	padding: 1rem;
+	font-size: 1rem;
+	line-height: 1.6;
+	border-radius: 8px;
 	word-wrap: break-word; /* 단어 단위로 줄바꿈 */
 	overflow-wrap: break-word; /* 강제 줄바꿈 */
 	word-break: break-word; /* 단어 단위로 박스 넘침 방지 */
 }
-.message-content ul {
-	padding-left: 1.5em; /* 채팅 버블 내부로 들여쓰기 유지 */
-	margin: 0; /* 기본 마진 제거 */
-}
+
 .message.bot .message-content {
-	background: #f1f1f2;
-	color: #000;
+	background: var(--card-bg);
+	/* main.css 카드배경 */
+	color: var(--text);
+	/* main.css 기본 텍스트 */
+	border: 1px solid var(--accent-light);
 	border-top-left-radius: 0;
 }
+
 .message.user .message-content {
-	background: #dcfce7;
-	color: #000;
+	background: var(--accent-dark);
+	color: var(--main-light);
 	border-top-right-radius: 0;
 }
+
+/* 7) 입력창 */
 .input-box {
+	flex: 0;
 	display: flex;
-	padding: 16px;
-	border-top: 1px solid #e5e5e5;
-	background-color: #fafafa;
+	padding: 1rem;
+	border-top: 1px solid var(--accent-light);
+	background: var(--main-light);
 }
+
 .input-box input {
 	flex: 1;
-	padding: 12px;
-	font-size: 18px;
-	border: 1px solid #ccc;
+	padding: 0.75rem 1rem;
+	font-size: 1rem;
+	border: 1px solid var(--accent-light);
 	border-radius: 8px;
+	font-family: var(--font);
 }
+
 .input-box button {
-	margin-left: 10px;
-	padding: 12px 20px;
-	font-size: 16px;
-	background-color: #10a37f;
-	color: white;
+	margin-left: 0.75rem;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	background: var(--accent-dark);
+	color: var(--main-light);
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
+	font-family: var(--font);
+	transition: background 0.2s;
 }
+
+.input-box button:hover {
+	background: var(--accent-light);
+}
+
+/* 8) 출처·뱃지·스위트얼럿2 등 부가 스타일 */
 .sources {
-	margin-top: 8px;
-	font-size: 0.85em;
-	color: #555;
+	margin-top: 0.5rem;
+	font-size: 0.85rem;
+	color: var(--muted);
 }
+
 .sources a {
-	color: #2e6da4;
-	text-decoration: none;
+	color: var(--accent-dark);
 }
+
 .sources a:hover {
 	text-decoration: underline;
 }
+
 .source-type {
-	margin-top: 6px;
-	font-size: 0.85em;
+	margin-top: 0.5rem;
+	font-size: 0.85rem;
 	font-style: italic;
-	color: #888;
-}
-.badge {
-	display: inline-block;
-	margin-top: 0.5em;
-	padding: 4px 8px;
-	border-radius: 6px;
-	font-size: 0.85em;
-	color: white;
-	background-color: #4a4a4a;
-}
-/* SweetAlert2 로딩 텍스트 간격 */
-.swal2-title {
-	margin-bottom: 24px !important;
+	color: var(--muted);
 }
 
-/* 로딩 애니메이션 크기 확대 */
+.badge {
+	display: inline-block;
+	margin-top: 0.5rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 6px;
+	font-size: 0.75rem;
+	color: var(--main-light);
+	background: var(--accent-light);
+}
+
+.swal2-title {
+	margin-bottom: 1.5rem !important;
+}
+
 .swal2-loader {
-	width: 70px !important;
-	height: 70px !important;
+	width: 64px !important;
+	height: 64px !important;
 	border-width: 6px !important;
-	margin: 30px 0 !important;
+	margin: 1.5rem 0 !important;
+}
+
+/* 9) 반응형 */
+@media (max-width: 768px) {
+	.chat-wrapper {
+		margin: 60px 1rem 2rem;
+		height: auto;
+	}
+
+	.message-content {
+		max-width: 80%;
+	}
+
+	.input-box {
+		flex-direction: column;
+	}
+
+	.input-box button {
+		width: 100%;
+		margin: 0.5rem 0 0;
+	}
 }

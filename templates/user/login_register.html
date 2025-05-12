@@ -1,18 +1,16 @@
 <!-- prettier-ignore -->
-{% extends 'base/index.html' %}
-{% block title %}로그인-회원가입{% endblock %}
-{% block css %} 
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+{% extends 'base/index.html' %} {% load static %}
+<!-- prettier-ignore -->
+{% block title %}로그인·회원가입{% endblock %} 
+{% block css %}
 <link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
-<link
-	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
-	rel="stylesheet" />
+{% endblock %} {% block js %}
+<script src="{% static 'js/login_register.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% endblock %}
 
 <!-- prettier-ignore -->
 {% block content %}
-{% csrf_token %}
 <div class="wrapper">
 	{% if messages %}
 	<div class="message-container">
@@ -22,12 +20,14 @@
 	</div>
 	{% endif %}
 
-	<div class="container">
-		<div class="sign-up-container">
+	<div class="container" id="container">
+		<!-- Sign Up -->
+		<div class="form-container sign-up-container">
 			<form action="{% url 'user-login-register' %}" method="POST">
 				{% csrf_token %}
 				<input type="hidden" name="action" value="signup" />
 				<h1>Create Account</h1>
+
 				<input type="text" placeholder="Username" name="username" required />
 				<input type="email" placeholder="Email" name="email" required />
 				<input type="password" placeholder="Password" name="password" required />
@@ -63,40 +63,39 @@
 						</label>
 					</div>
 				</div>
-
-				<button class="form_btn" type="submit">Sign Up</button>
+				<button type="submit" class="form_btn">Sign Up</button>
 			</form>
 		</div>
 
-		<div class="sign-in-container">
+		<!-- Sign In -->
+		<div class="form-container sign-in-container">
 			<form action="{% url 'user-login-register' %}" method="POST">
 				{% csrf_token %}
 				<input type="hidden" name="action" value="signin" />
 				<h1>Sign In</h1>
+
 				<input type="text" placeholder="Username" name="username" required autofocus />
 				<input type="password" placeholder="Password" name="password" required />
-				<button class="form_btn" type="submit">Sign In</button>
+				<a href="#" class="forgot-password">Forgot your password?</a>
+				<button type="submit" class="form_btn">Sign In</button>
 			</form>
 		</div>
 
+		<!-- Overlay -->
 		<div class="overlay-container">
-			<div class="overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button id="signIn" class="overlay_btn">Sign In</button>
-			</div>
-			<div class="overlay-right">
-				<h1>Hello, Friend</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button id="signUp" class="overlay_btn">Sign Up</button>
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="overlay_btn" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="overlay_btn" id="signUp">Sign Up</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-{% endblock %}
-
-<!-- prettier-ignore -->
-{% block js %} {% load static %}
-<script src="{% static 'js/login_register.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% endblock %}
