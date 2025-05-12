@@ -1,0 +1,101 @@
+<!-- prettier-ignore -->
+{% extends 'base/index.html' %} {% load static %}
+<!-- prettier-ignore -->
+{% block title %}로그인·회원가입{% endblock %} 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
+{% endblock %} {% block js %}
+<script src="{% static 'js/login_register.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+<div class="wrapper">
+	{% if messages %}
+	<div class="message-container">
+		{% for message in messages %}
+		<div class="message {{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+	<div class="container" id="container">
+		<!-- Sign Up -->
+		<div class="form-container sign-up-container">
+			<form action="{% url 'user-login-register' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="action" value="signup" />
+				<h1>Create Account</h1>
+
+				<input type="text" placeholder="Username" name="username" required />
+				<input type="email" placeholder="Email" name="email" required />
+				<input type="password" placeholder="Password" name="password" required />
+
+				<!-- 관리자 / 사용자 선택 -->
+				<div class="role-selection">
+					<div class="control-container">
+						<input
+							type="radio"
+							id="role-user"
+							name="role"
+							value="user"
+							class="screen-reader"
+							checked />
+
+						<label class="label-box" for="role-user">
+							<span class="check-icon" aria-hidden="true"></span>
+							사용자
+						</label>
+					</div>
+
+					<div class="control-container">
+						<input
+							type="radio"
+							id="role-admin"
+							name="role"
+							value="admin"
+							class="screen-reader" />
+
+						<label class="label-box" for="role-admin">
+							<span class="check-icon" aria-hidden="true"></span>
+							관리자
+						</label>
+					</div>
+				</div>
+				<button type="submit" class="form_btn">Sign Up</button>
+			</form>
+		</div>
+
+		<!-- Sign In -->
+		<div class="form-container sign-in-container">
+			<form action="{% url 'user-login-register' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="action" value="signin" />
+				<h1>Sign In</h1>
+
+				<input type="text" placeholder="Username" name="username" required autofocus />
+				<input type="password" placeholder="Password" name="password" required />
+				<a href="#" class="forgot-password">Forgot your password?</a>
+				<button type="submit" class="form_btn">Sign In</button>
+			</form>
+		</div>
+
+		<!-- Overlay -->
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="overlay_btn" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="overlay_btn" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
