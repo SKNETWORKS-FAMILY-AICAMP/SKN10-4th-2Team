@@ -6,7 +6,6 @@
 database/
 
 # 마이그레이션 파일
-**/migrations/
 **/migrations/*.pyc
 **/migrations/__pycache__/
 
