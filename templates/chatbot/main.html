@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
 {% extends 'base/index.html' %} {% load static %} 
-{% block title %}와인초보 입문 가이드 챗봇{% endblock %}
+{% block title %}와인 입문 가이드 챗봇{% endblock %}
 
 <!-- prettier-ignore -->
 {% block css %}
@@ -10,146 +10,228 @@
 <!-- prettier-ignore -->
 {% block content %}
 <div class="wrapper">
-	<div class="container content">
-		<!-- 1. 가장 큰 제목 -->
-		<h1>와인초보 입문 가이드 챗봇 기획안</h1>
+	<div class="content">
+		<!-- Hero Section -->
+		<header>
+			<h1>와인 입문 가이드 챗봇</h1>
+		</header>
 
 		<!-- 1. 서비스 개요 -->
-		<h2>1. 서비스 개요</h2>
-		<div class="section-body">
-			와인 입문 챗봇은 와인에 대한 지식이 부족한 초보자를 위해,<br />
-			음식 페어링, 와인 용어 해석, 입문용 추천 정보를 AI 기반으로<br />
-			정확하고 다단계 평가 방식으로 안내하는 맞춤형 챗봇 서비스입니다.
-		</div>
+		<section id="overview">
+			<h2>1. 서비스 개요</h2>
+			<div class="section-body">
+				<p>
+					와인 입문 가이드 챗봇은 와인에 대한 지식이 부족한 초보자를 위해 음식 페어링,
+					와인 용어 해석, 입문용 추천 정보를 AI 기반의 정교한 다단계 평가 방식으로
+					제공하는 와인 입문 가이드 챗봇 서비스입니다.
+				</p>
+			</div>
+		</section>
 
-		<!-- 2. 기획 배경 -->
-		<h2>2. 기획 배경</h2>
-		<div class="section-body">
-			🍇 <strong>와인 정보의 복잡함</strong><br />
-			&nbsp;&nbsp;라벨, 품종, 빈티지 등 구조화되지 않은 정보가 많아 진입장벽이 높음<br />
-			🧀 <strong>실용적인 음식 페어링 정보 부족</strong><br />
-			&nbsp;&nbsp;한식, 매운 음식 등 실생활 기반 궁합 정보 부족<br />
-			📱 <strong>비대면 와인 큐레이션 수요 증가</strong><br />
-			&nbsp;&nbsp;홈술 트렌드와 입문자 증가로, 대화형 정보 탐색 니즈 확대
-		</div>
+		<!-- 2. 서비스 기획 배경 -->
+		<section id="background">
+			<h2>2. 서비스 기획 배경</h2>
+			<div class="cards-grid">
+				<div class="card-news">
+					<h3>와인 정보의 복잡함</h3>
+					<p>라벨, 품종, 빈티지 등 비정형 정보가 많아 입문자에게 큰 장벽이 됩니다.</p>
+				</div>
+				<div class="card-news">
+					<h3>실생활 맞춤 페어링 정보 부족</h3>
+					<p>
+						한식, 매운 음식 등 일상 음식과의 궁합 정보가 체계적으로 제공되지 않습니다.
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>대화형 추천 수요 증가</h3>
+					<p>
+						홈술 트렌드 확산 및 입문자 증가로 대화 기반 와인 추천 서비스 니즈가 높아지고
+						있습니다.
+					</p>
+				</div>
+			</div>
+		</section>
 
-		<!-- 3. UX 시나리오 -->
-		<h2>3. 사용자 경험 흐름 (UX 시나리오)</h2>
-		<div class="section-body">
-			✅ <strong>사용자 입력 단계</strong><br />
-			&nbsp;&nbsp;“삼겹살에 어울리는 와인 뭐가 있어요?”<br />
-			&nbsp;&nbsp;“까쇼 블렌딩이 뭔 뜻이에요?”<br />
-			&nbsp;&nbsp;“2~3만 원대 입문용 레드 추천해줘요”<br />
-			➡️ ‘와인 추천 받기’ 버튼 클릭<br /><br />
-
-			🤖 <strong>챗봇 응답 프로세스</strong><br />
-			&nbsp;&nbsp;1. 사용자 질문 → sLLM이 1차 응답 A 생성<br />
-			&nbsp;&nbsp;2. GPT-4o-mini가 A의 신뢰도와 연관성 평가<br />
-			&nbsp;&nbsp;3. 불충분 시 → FAISS 기반 RAG로 내부 문서 검색 → 응답 B 생성<br />
-			&nbsp;&nbsp;4. 다시 GPT-4o-mini가 B 평가<br />
-			&nbsp;&nbsp;5. 여전히 부족 시 → Tavily API로 외부 콘텐츠 요약 → 최종 응답 C 생성<br />
-			&nbsp;&nbsp;6. 사용자에게 가장 신뢰도 높은 결과 제공<br />
-			&nbsp;&nbsp;→ 다단계 필터링으로 정확도 높은 추천 및 설명 제공
-		</div>
+		<!-- 3. 핵심 기능 (카드뉴스 형태) -->
+		<section id="features">
+			<h2>3. 핵심 기능</h2>
+			<div class="cards-grid">
+				<div class="card-news">
+					<h3>🍽️ 음식 페어링</h3>
+					<p>
+						사용자가 먹고 싶은 음식을 입력하면, 음식의 풍미·향·강도에 맞춰 최적의 와인을
+						추천해 드립니다.
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>📖 와인 용어 해석</h3>
+					<p>
+						‘까쇼’, ‘블렌딩’, ‘빈티지’ 등 전문 용어를 초보자도 쉽게 이해할 수 있도록
+						풀어드립니다.
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>🍷 입문용 추천 정보</h3>
+					<p>
+						가격대별·품종별 입문 추천 와인을 단계별로 제안하고, 선택 팁과 테이스팅
+						노트를 제공합니다.
+					</p>
+				</div>
+			</div>
+		</section>
 
 		<!-- 4. 기술 구성 요소 -->
-		<h2>4. 기술 구성 요소</h2>
-		<div class="section-body">
-			🧠 <strong>LLM 및 평가 모델</strong><br />
-			&nbsp;&nbsp;- 1차 응답: Fine-tuned sLLM (와인 용어·페어링 문체 학습)<br />
-			&nbsp;&nbsp;- 평가: GPT-4o-mini (OpenAI API 기반)<br /><br />
-
-			🔍 <strong>검색 기반 QA (RAG)</strong><br />
-			&nbsp;&nbsp;- 부정확 시 → FAISS 내부 문서 벡터 검색<br />
-			&nbsp;&nbsp;- 관련 콘텐츠 주입 후 재생성<br />
-			&nbsp;&nbsp;- 필요 시 Tavily 웹 검색으로 보완<br /><br />
-
-			💻 <strong>시스템 구성</strong><br />
-			&nbsp;&nbsp;- 백엔드: Django (Python)<br />
-			&nbsp;&nbsp;- 프론트엔드: HTML, CSS, Django Template<br />
-			&nbsp;&nbsp;- 모듈 흐름: 입력 → sLLM → GPT-4o-mini → RAG → Tavily
-		</div>
+		<section id="tech-stack">
+			<h2>4. 기술 구성 요소</h2>
+			<div class="cards-grid">
+				<div class="card-news">
+					<h3>1차 응답 생성</h3>
+					<p>
+						Fine-tuned sLLM을 사용해 와인 용어·페어링 문체로 학습된 1차 응답을
+						생성합니다.
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>응답 평가</h3>
+					<p>
+						GPT-4o-mini(OpenAI API 기반)로 1차 응답의 적절성·정확성·문체 등을
+						평가합니다.
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>검색 기반 QA (RAG)</h3>
+					<p>
+						- GPT 평가 후 부정확할 경우 FAISS 기반 내부 문서 벡터 검색<br />
+						- 관련 콘텐츠를 sLLM 프롬프트에 주입해 응답 재생성<br />
+						- 여전히 부족할 시 Tavily 웹 검색으로 요약 보완
+					</p>
+				</div>
+			</div>
+		</section>
 
 		<!-- 5. 데이터 소스 -->
-		<h2>5. 데이터 소스</h2>
-		<div class="section-body">
-			• <strong>내부 문서</strong><br />
-			&nbsp;&nbsp;- 한국와인협회 초보자 가이드, 수입사 교육자료 (PDF→텍스트 전처리)<br />
-			&nbsp;&nbsp;- 음식별 와인 페어링 추천표<br /><br />
-			• <strong>외부 콘텐츠</strong><br />
-			&nbsp;&nbsp;- 유튜브 자막 (와인앤모어, 비노빈센트)<br />
-			&nbsp;&nbsp;- 와인 리뷰 블로그·마트 콘텐츠 (출처 표시 및 요약)
-		</div>
+		<section id="data-sources">
+			<h2>5. 데이터 소스</h2>
+			<div class="tech-section">
+				<h3>■ Fine-Tuning (유튜브 자막 기반)</h3>
+				<ul>
+					<li>
+						<strong>All That Wine 채널 재생목록:</strong> 와인 테이스팅, 입문·중급 강의,
+						와인 추천, 지역·품종별 비교, 기초상식 등
+					</li>
+					<li>
+						<strong>와푸밸 Wine Food Balance 채널:</strong> 추천, 상식, 음식과 와인 조합
+						중심<br />
+						<a href="https://www.youtube.com/@Allthatwine" target="_blank"
+							>[All that wine]</a
+						>
+						/
+						<a href="https://www.youtube.com/@와푸밸" target="_blank">[와푸밸]</a>
+					</li>
+					<li>→ 자막 데이터를 추출하여 모델 학습에 활용</li>
+				</ul>
+			</div>
 
-		<!-- 6. 사용자 케이스 예시 -->
-		<h2>6. 사용자 케이스 예시</h2>
-		<table class="styled-table">
-			<thead>
-				<tr>
-					<th>케이스</th>
-					<th>설명</th>
-					<th>챗봇 기능</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>🍛 음식 페어링</td>
-					<td>삼겹살, 매운탕, 치즈 등과 어울리는 와인 추천</td>
-					<td>추천 와인 + 페어링 이유 제공</td>
-				</tr>
-				<tr>
-					<td>📘 와인 용어 해설</td>
-					<td>까쇼, 블렌딩, 빈티지, 바디감 등 전문용어 풀이</td>
-					<td>용어 설명 + 연관 예시 와인 안내</td>
-				</tr>
-				<tr>
-					<td>🍷 구매 가이드</td>
-					<td>입문자용 가격대, 인기 품종 추천</td>
-					<td>가격대별 와인 추천 + 구매 팁 제공</td>
-				</tr>
-			</tbody>
-		</table>
+			<div class="tech-section">
+				<h3>■ RAG (문서 검색 기반 보완)</h3>
+				<ul>
+					<li>
+						<strong>WINE21.COM:</strong> 품종, 지역, 음식 페어링 등 와인 정보 크롤링
+					</li>
+					<li>→ BeautifulSoup / Selenium / requests로 수집하여 벡터화</li>
+					<li><a href="https://www.wine21.com" target="_blank">[WINE21.COM]</a></li>
+				</ul>
+			</div>
+		</section>
+		<!-- 6. 사용자 케이스별 활용 예시 -->
+		<section id="use-cases">
+			<h2>6. 사용자 케이스별 활용 예시</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>케이스 유형</th>
+						<th>설명</th>
+						<th>챗봇 기능</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>용어 설명</td>
+						<td>까쇼, 블렌딩, 빈티지 등 전문용어의 의미</td>
+						<td>용어 풀이 및 관련 와인 예시 제공</td>
+					</tr>
+					<tr>
+						<td>구매 가이드</td>
+						<td>입문자용 가격대별·품종별 추천</td>
+						<td>추천 와인 리스트 및 선택 팁 제공</td>
+					</tr>
+					<tr>
+						<td>음식 페어링</td>
+						<td>삼겹살, 매운탕, 치즈 등 일상 음식과 어울리는 와인</td>
+						<td>페어링 와인 및 이유 설명</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 
-		<!-- 7. 고도화 아이디어 -->
-		<h2>7. 고도화 아이디어</h2>
-		<table class="styled-table">
-			<thead>
-				<tr>
-					<th>기능</th>
-					<th>설명</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>📷 라벨 이미지 인식</td>
-					<td>와인 라벨 이미지로 품종 및 설명 자동 추출</td>
-				</tr>
-				<tr>
-					<td>🛒 쇼핑몰 연동</td>
-					<td>추천 와인에 바로 연결되는 구매 링크 제공</td>
-				</tr>
-				<tr>
-					<td>📓 테이스팅 노트 기록</td>
-					<td>사용자가 마신 와인을 기록해 개인화 추천 정밀도 향상</td>
-				</tr>
-			</tbody>
-		</table>
+		<!-- 7. 확장 가능성 및 고도화 아이디어 (카드뉴스 형식) -->
+		<section id="future">
+			<h2>7. 확장 가능성 및 고도화 아이디어</h2>
+			<div class="cards-grid">
+				<div class="card-news">
+					<h3>쇼핑몰 연동</h3>
+					<p>
+						추천된 와인에 바로 연결되는 구매 링크를 제공하여 커머스 연계와 편리한 쇼핑
+						경험 지원
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>라벨 이미지 인식</h3>
+					<p>
+						와인 라벨 이미지를 OCR로 분석해 텍스트를 추출하고, AI가 자동으로 해석 정보
+						제공
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>다국어 지원</h3>
+					<p>
+						영어·프랑스어 등 다국어 번역 기능을 추가해 글로벌 사용자도 쉽고 빠르게 이용
+						가능
+					</p>
+				</div>
+			</div>
+		</section>
 
-		<!-- 8. 기대 효과 -->
-		<h2>8. 기대 효과</h2>
-		<div class="section-body">
-			✅ 와인 입문자의 학습과 실용 소비 지원<br />
-			✅ 정확한 추천 및 해설로 신뢰성 있는 콘텐츠 제공<br />
-			✅ 와인 문화 확산 및 커머스 연계 가능성 확보
-		</div>
+		<!-- 8. 요약 및 기대 효과 (카드뉴스 형식) -->
+		<section id="summary">
+			<h2>8. 요약 및 기대 효과</h2>
+			<div class="cards-grid">
+				<div class="card-news">
+					<h3>🎓 학습 지원</h3>
+					<p>단계별 가이드와 용어 해설로 와인 입문자의 학습 곡선 완만하게 지원</p>
+				</div>
+				<div class="card-news">
+					<h3>🔍 신뢰도 향상</h3>
+					<p>
+						AI 기반 다단계 평가로 정확하고 일관된 추천·해설을 제공해 사용자 신뢰도 확보
+					</p>
+				</div>
+				<div class="card-news">
+					<h3>🌐 문화 확산</h3>
+					<p>
+						대화형 인터페이스로 와인 문화에 친숙해지도록 돕고, 커머스 연계 가능성 확대
+					</p>
+				</div>
+			</div>
+		</section>
 
-		<!-- 9. 응답 생성 프로세스 요약 -->
-		<h2>9. 응답 생성 프로세스 요약</h2>
-		<div class="section-body preformatted">
-			[사용자 질문 입력] ↓ [Fine-tuned sLLM이 1차 응답 생성] ↓ [GPT-4o-mini가 평가 → 부정확
-			시] ↓ [FAISS로 내부 문서 검색 → 응답 재생성] ↓ [여전히 부족 시 Tavily로 웹 검색 요약] ↓
-			[최종 응답 + 후속 추천 제공]
-		</div>
+		<!-- 9. 서비스 흐름 다이어그램 -->
+		<section id="diagram">
+			<h2>9. 서비스 흐름 다이어그램</h2>
+			<div class="diagram">
+				<img src="{% static 'images/diagram.png' %}" alt="서비스 다이어그램" />
+			</div>
+		</section>
 	</div>
 </div>
 {% endblock %}
