@@ -5,7 +5,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 :root {
@@ -102,10 +102,6 @@ p {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform .2s;
-}
-
-.card-news:hover {
-  transform: translateY(-4px);
 }
 
 .card-news h3 {
