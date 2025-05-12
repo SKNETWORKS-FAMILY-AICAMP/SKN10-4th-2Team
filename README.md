@@ -1,9 +1,41 @@
 # SKN10-4th-2Team
 개발 기간 : 2025.05.09 ~ 2025.05.12
-
-팀장 : 문승기
-
-팀원 : 배민경 신민주 좌민서 홍승표
+<table align=center>
+  <tbody>
+    <tr>
+    <br>
+      <td align=center><b>문승기</b></td>
+      <td align=center><b>배민경</b></td>
+      <td align=center><b>신민주</b></td>
+      <td align=center><b>좌민서</b></td>
+      <td align=center><b>홍승표</b></td>
+    </tr>
+    <tr>
+      <td align="center">
+         <img src="https://github.com/user-attachments/assets/9edf699b-3f3d-4847-a7da-c5278c65394c" width="200px;" alt="문승기"/>
+      </td>
+      <td align="center">
+          <img src="https://github.com/user-attachments/assets/90e304e9-f8ae-4ee5-9ac4-e635dc83d066" width="200px;" alt="배민경"/>
+      </td>
+      <td align="center">
+          <img src="https://github.com/user-attachments/assets/28f92593-63d0-4915-a837-205732ea7517" width="200px;" alt="신민주"/>
+      </td>
+      <td align="center">
+          <img src="https://github.com/user-attachments/assets/5d24e79a-1a8a-42e7-9131-785511c671bc" width="200px;" alt="좌민서"/>
+      </td>
+       <td align="center">
+          <img src="https://github.com/user-attachments/assets/b56ec8b6-050f-45f0-a2ab-2befcc876604" width="200px;" alt="홍승표"/>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="https://www.wine21.com/13_search/wine_view.html?Idx=162135"><div align=center>칸티 모스카토 다스티</div></a></td>
+      <td><a href="https://www.wine21.com/13_search/wine_view.html?Idx=171671"><div align=center>프로세코 로제</div></a></td>
+      <td><a href="https://www.wine21.com/13_search/wine_view.html?Idx=149632"><div align=center>G7 레세르바 샤르도네</div></a></td>
+      <td><a href="https://www.wine21.com/13_search/wine_view.html?Idx=156782"><div align=center>스크리밍 이글</div></a></td>
+      <td><a href="https://www.wine21.com/13_search/wine_view.html?Idx=142964"><div align=center>드라이 셰리</div></a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## VINO - **와인 입문 가이드 챗봇**
 ![Image](https://github.com/user-attachments/assets/bc165d75-9bcf-4e68-8044-b87e811f8aea)
@@ -274,7 +306,14 @@ ollama create gemma3-wine -f Modelfile
 
 ## 12. 이슈 및 해결방법
 
-### 1. 
+### 1. AWS
+![Image](https://github.com/user-attachments/assets/79e49e71-3a67-4847-a0dc-7da61436c053)
+
+###  원인
+컨테이너 이미지를 pull하거나 layer를 추출하는 과정에서 **작업 노드의 디스크 용량 부족**으로 인해 실패함.
+
+###  해결 방법
+
 
 <br>
 
