@@ -32,6 +32,7 @@ def login_required(request):
         username = request.POST.get('username').strip()
         password = request.POST.get('password').strip()
         email    = request.POST.get('email').strip()
+        is_superuser = request.POST.get('is_superuser') == 'true'
 
         if not username or not password or not email:
             messages.error(request, '아이디, 이메일, 비밀번호를 입력하세요.')
@@ -42,7 +43,10 @@ def login_required(request):
             return redirect('user-login-register')
 
         try:
-            new_user = CustomUser.objects.create_user(username=username, password=password, email=email)
+            if is_superuser:
+                new_user = CustomUser.objects.create_superuser(username=username, password=password, email=email)
+            else:
+                new_user = CustomUser.objects.create_user(username=username, password=password, email=email)
             new_user.save()
             messages.success(request, '회원가입이 완료되었습니다.')
         except Exception:

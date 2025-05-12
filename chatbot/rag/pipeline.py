@@ -5,7 +5,6 @@ from .multiquery import generate_multi_queries
 from .relevance_check import is_relevant
 from .internal_rag import search_documents, generate_answer_with_docs
 from .external_rag import tavily_search
-from .answer_llm import llm_answer
 
 def strip_badge(text: str) -> str:
     """
