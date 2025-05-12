@@ -2,12 +2,15 @@
 .venv/
 .env
 
+# 데이터베이스 디렉토리
 database/
 
-chatbot/migrations/
-user/migrations/
+# 마이그레이션 파일
+**/migrations/
+**/migrations/*.pyc
+**/migrations/__pycache__/
 
-# pychache 제거
-chatbot/__pycache__/
-user/__pycache__/
-config/__pycache__/
+# __pycache__ 및 .pyc 파일
+__pycache__/
+*.pyc
+*.pyo

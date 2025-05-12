@@ -1,13 +1,10 @@
-{% extends 'base/index.html' %}
-{% load static %}
-
-{% block title %}로그인·회원가입{% endblock %}
-
+<!-- prettier-ignore -->
+{% extends 'base/index.html' %} {% load static %}
+<!-- prettier-ignore -->
+{% block title %}로그인·회원가입{% endblock %} 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/login_register.css' %}" />
-{% endblock %}
-
-{% block js %}
+{% endblock %} {% block js %}
 <script src="{% static 'js/login_register.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% endblock %}
@@ -33,6 +30,41 @@
 				<input type="text" placeholder="Username" name="username" required />
 				<input type="email" placeholder="Email" name="email" required />
 				<input type="password" placeholder="Password" name="password" required />
+<<<<<<< HEAD
+=======
+
+				<!-- 관리자 / 사용자 선택 -->
+				<div class="role-selection">
+					<div class="control-container">
+						<input
+							type="radio"
+							id="role-user"
+							name="role"
+							value="user"
+							class="screen-reader"
+							checked />
+
+						<label class="label-box" for="role-user">
+							<span class="check-icon" aria-hidden="true"></span>
+							사용자
+						</label>
+					</div>
+
+					<div class="control-container">
+						<input
+							type="radio"
+							id="role-admin"
+							name="role"
+							value="admin"
+							class="screen-reader" />
+
+						<label class="label-box" for="role-admin">
+							<span class="check-icon" aria-hidden="true"></span>
+							관리자
+						</label>
+					</div>
+				</div>
+>>>>>>> f0eb8261b10a27d3724bf3765a7b6054fc818246
 				<button type="submit" class="form_btn">Sign Up</button>
 			</form>
 		</div>
