@@ -6,7 +6,7 @@
 }
 
 html {
-	font-size: 16px;
+	font-size: 18px;
 }
 
 :root {
@@ -48,6 +48,9 @@ body {
 
 h1 {
 	font-size: 2.5rem;
+}
+header .h2 {
+	font-size: 1.5rem;
 }
 
 /* 40px */
@@ -122,6 +125,7 @@ p {
 /* 기술 구성 */
 .tech-section {
 	margin-bottom: 1.5rem;
+	line-height: 1.5;
 }
 
 .tech-section h3 {
@@ -132,6 +136,7 @@ p {
 .tech-section ul {
 	margin-left: 1rem;
 	list-style: disc;
+	padding-left: 1.5rem;
 }
 
 .tech-section a {
@@ -167,7 +172,6 @@ th {
 .diagram img {
 	max-width: 100%;
 	height: auto;
-	border: 2px solid var(--accent-light);
 	border-radius: 8px;
 }
 

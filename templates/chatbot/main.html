@@ -13,7 +13,8 @@
 	<div class="content">
 		<!-- Hero Section -->
 		<header>
-			<h1>와인 입문 가이드 챗봇</h1>
+			<h1>VINO</h1>
+			<h2>와인 입문 가이드 챗봇</h2>
 		</header>
 
 		<!-- 1. 서비스 개요 -->
@@ -80,69 +81,64 @@
 			</div>
 		</section>
 
-		<!-- 4. 기술 구성 요소 -->
+		<!-- 4. 기술 구성 요소 (리스트 형태) -->
 		<section id="tech-stack">
 			<h2>4. 기술 구성 요소</h2>
-			<div class="cards-grid">
-				<div class="card-news">
-					<h3>1차 응답 생성</h3>
-					<p>
+			<div class="tech-section">
+				<h3>■ 1차 응답 생성</h3>
+				<ul>
+					<li>
 						Fine-tuned sLLM을 사용해 와인 용어·페어링 문체로 학습된 1차 응답을
 						생성합니다.
-					</p>
-				</div>
-				<div class="card-news">
-					<h3>응답 평가</h3>
-					<p>
+					</li>
+				</ul>
+			</div>
+
+			<div class="tech-section">
+				<h3>■ 응답 평가</h3>
+				<ul>
+					<li>
 						GPT-4o-mini(OpenAI API 기반)로 1차 응답의 적절성·정확성·문체 등을
 						평가합니다.
+					</li>
+				</ul>
+			</div>
+
+			<div class="tech-section">
+				<h3>■ 검색 기반 QA (RAG)</h3>
+				<ul>
+					<li>GPT 평가 후 부정확할 경우 FAISS 기반 내부 문서 벡터 검색</li>
+					<li>관련 콘텐츠를 sLLM 프롬프트에 주입해 응답 재생성</li>
+					<li>여전히 부족할 시 Tavily 웹 검색으로 요약 보완</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- 5. 데이터 소스 (카드 형식) -->
+		<section id="data-sources">
+			<h2>5. 데이터 소스</h2>
+			<div class="cards-grid">
+				<div class="card-news">
+					<h3>Fine-Tuning (유튜브 자막 기반)</h3>
+					<p>All That Wine, 와푸밸 채널 자막 데이터를 추출하여 모델 학습에 활용합니다.</p>
+					<p>
+						<a href="https://www.youtube.com/@Allthatwine" target="_blank"
+							>All That Wine</a
+						>
+						/ <a href="https://www.youtube.com/@와푸밸" target="_blank">와푸밸</a>
 					</p>
 				</div>
 				<div class="card-news">
-					<h3>검색 기반 QA (RAG)</h3>
+					<h3>RAG (문서 검색 기반 보완)</h3>
 					<p>
-						- GPT 평가 후 부정확할 경우 FAISS 기반 내부 문서 벡터 검색<br />
-						- 관련 콘텐츠를 sLLM 프롬프트에 주입해 응답 재생성<br />
-						- 여전히 부족할 시 Tavily 웹 검색으로 요약 보완
+						WINE21.COM에서 크롤링한 와인 정보를 FAISS 벡터화 후 검색하여 응답을
+						보완합니다.
 					</p>
+					<p><a href="https://www.wine21.com/" target="_blank">WINE21.COM</a></p>
 				</div>
 			</div>
 		</section>
 
-		<!-- 5. 데이터 소스 -->
-		<section id="data-sources">
-			<h2>5. 데이터 소스</h2>
-			<div class="tech-section">
-				<h3>■ Fine-Tuning (유튜브 자막 기반)</h3>
-				<ul>
-					<li>
-						<strong>All That Wine 채널 재생목록:</strong> 와인 테이스팅, 입문·중급 강의,
-						와인 추천, 지역·품종별 비교, 기초상식 등
-					</li>
-					<li>
-						<strong>와푸밸 Wine Food Balance 채널:</strong> 추천, 상식, 음식과 와인 조합
-						중심<br />
-						<a href="https://www.youtube.com/@Allthatwine" target="_blank"
-							>[All that wine]</a
-						>
-						/
-						<a href="https://www.youtube.com/@와푸밸" target="_blank">[와푸밸]</a>
-					</li>
-					<li>→ 자막 데이터를 추출하여 모델 학습에 활용</li>
-				</ul>
-			</div>
-
-			<div class="tech-section">
-				<h3>■ RAG (문서 검색 기반 보완)</h3>
-				<ul>
-					<li>
-						<strong>WINE21.COM:</strong> 품종, 지역, 음식 페어링 등 와인 정보 크롤링
-					</li>
-					<li>→ BeautifulSoup / Selenium / requests로 수집하여 벡터화</li>
-					<li><a href="https://www.wine21.com" target="_blank">[WINE21.COM]</a></li>
-				</ul>
-			</div>
-		</section>
 		<!-- 6. 사용자 케이스별 활용 예시 -->
 		<section id="use-cases">
 			<h2>6. 사용자 케이스별 활용 예시</h2>
@@ -229,7 +225,7 @@
 		<section id="diagram">
 			<h2>9. 서비스 흐름 다이어그램</h2>
 			<div class="diagram">
-				<img src="{% static 'images/diagram.png' %}" alt="서비스 다이어그램" />
+				<img src="{% static 'img/diagram.png' %}" alt="서비스 다이어그램" />
 			</div>
 		</section>
 	</div>

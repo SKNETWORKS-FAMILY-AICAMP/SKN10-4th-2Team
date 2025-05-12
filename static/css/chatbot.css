@@ -19,16 +19,21 @@
 
 body {
 	background: white;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0;
 }
-
+.chat-wrapper-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
 /* 3) 챗봇 래퍼 */
 .chat-wrapper {
 	width: 100%;
-	max-width: 1200px;
-	margin: 60px auto 2rem;
-	/* navbar 높이만큼 띄우기 */
-	height: calc(100vh - 60px);
-	margin: 60px auto 0;
+	height: 80vh;
+	margin: 40px 0 0;
 	max-width: 768px;
 	background: var(--main-light);
 	border-radius: 12px;
@@ -54,6 +59,7 @@ body {
 
 .message.bot {
 	justify-content: flex-start;
+	width: inherit;
 }
 
 .message.user {
@@ -62,7 +68,7 @@ body {
 
 /* 6) 말풍선 */
 .message-content {
-	max-width: 60%;
+	max-width: 75%;
 	padding: 1rem;
 	font-size: 1rem;
 	line-height: 1.6;
@@ -167,13 +173,22 @@ body {
 
 /* 9) 반응형 */
 @media (max-width: 768px) {
+	.chat-wrapper-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+	}
 	.chat-wrapper {
-		margin: 60px 1rem 2rem;
-		height: auto;
+		margin: 30px auto;
+		width: 80%;
+		height: 85vh;
 	}
 
 	.message-content {
-		max-width: 80%;
+		max-width: 75%;
+		word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+		word-break: break-word; /* 단어 단위로 박스 넘침 방지 */
 	}
 
 	.input-box {
